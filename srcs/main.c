@@ -1,6 +1,20 @@
-#include <libc.h>
-int main(void)
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
+/*   Updated: 2024/01/06 00:27:56 by csakamot         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+// #include <libc.h>
+#include "../inc/cub3d.h"
+
+int	main(void)
 {
 	printf("cub3D!");
-	return 0;
+	return (EXIT_SUCCESS);
 }
