@@ -2,7 +2,7 @@ NAME = cub3D
 
 SRC = main.c \
 
-CHECK_ARG = check_arg.c \
+CHECK_ARG_SRC = check_arg.c \
 
 SRCDIR = srcs
 SRCS = $(addprefix $(SRCDIR)/, $(SRC))
