@@ -3,7 +3,7 @@
 
 # include <stdio.h>
 # include <unistd.h>
-# include "../mlx/mlx.h"
+# include "../minilibx-linux/mlx.h"
 # include "./define.h"
 
 #endif

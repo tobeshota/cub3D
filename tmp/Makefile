@@ -48,8 +48,8 @@ all : $(NAME)
 
 $(NAME): $(OBJS)
 	@ $(MAKE) -C ./libft
-	@ $(MAKE) -C ./minilibx-linux
-	@ $(CC) $(CFLAGS) -o $@ $^ $(LIBFT)
+	@ $(MAKE) -C ./mlx
+	@ $(CC) $(CFLAGS) -o $@ $^ $(LIBFT) -Lmlx -lmlx -framework OpenGL -framework AppKit
 	@ printf "$(CHECK) $(BLUE)Compiling cub3D...%-50.50s\n$(RESET)"
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
@@ -59,13 +59,13 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.c
 
 clean :
 	@ $(MAKE) -C ./libft clean
-	@ $(MAKE) -C ./minilibx-linux clean
+	@ $(MAKE) -C ./mlx clean
 	@ $(RM) $(OBJDIR)
 	@ echo "$(REMOVE) $(BLUE)Remove cub3D object files. $(RESET)"
 
 fclean :
 	@ $(MAKE) -C ./libft fclean
-	@ $(MAKE) -C ./minilibx-linux clean
+	@ $(MAKE) -C ./mlx fclean
 	@ $(RM) $(OBJDIR) $(NAME)
 	@ echo "$(REMOVE) $(BLUE)Remove cub3D object files and $(NAME). $(RESET)"
 
