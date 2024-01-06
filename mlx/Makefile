@@ -37,11 +37,11 @@ $(NOM):	$(OBJ)
 	@ printf "$(CHECK) $(BLUE)Compiling minilbx...%-50.50s\n$(RESET)"
 
 %.o: %.c
-	@ cc -c $< -o $@ $(CFLAGS)
+	@ gcc -c $< -o $@ $(CFLAGS)
 	$(call progress)
 
 %.o: %.m
-	@ cc -c $< -o $@ $(CFLAGS)
+	@ gcc -c $< -o $@ $(CFLAGS)
 	$(call progress)
 
 clean:
