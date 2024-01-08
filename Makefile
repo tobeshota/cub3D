@@ -18,7 +18,7 @@ MAKE_DIRS = $(addprefix $(OBJDIR)/, $(MAKE_DIR))
 CFLAGS = -Wall -Wextra -Werror -MP -MMD -O3
 RM = rm -rf
 
-INC = -I./inc/ -I./libft/inc -I./mlx
+INC = -I./inc/ -I./libft/inc -I./minilibx-linux
 
 LIBFT = libft/libft.a
 
@@ -48,24 +48,25 @@ all : $(NAME)
 
 $(NAME): $(OBJS)
 	@ $(MAKE) -C ./libft
-	@ $(MAKE) -C ./mlx
-	@ $(CC) $(CFLAGS) -o $@ $^ $(LIBFT) -Lmlx -lmlx -framework OpenGL -framework AppKit
+	@ $(MAKE) -C ./minilibx-linux 2>/dev/null
+	@ $(CC) $(CFLAGS) -o $@ $^ $(LIBFT)
 	@ printf "$(CHECK) $(BLUE)Compiling cub3D...%-50.50s\n$(RESET)"
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
-	@ mkdir -p $(MAKE_DIRS)
+	-git clone https://github.com/42Paris/minilibx-linux.git
+	mkdir -p $(MAKE_DIRS)
 	@ $(CC) $(CFLAGS) $(INC) -o $@ -c $<
 	$(call progress)
 
 clean :
 	@ $(MAKE) -C ./libft clean
-	@ $(MAKE) -C ./mlx clean
+	@ $(MAKE) -C ./minilibx-linux clean
 	@ $(RM) $(OBJDIR)
 	@ echo "$(REMOVE) $(BLUE)Remove cub3D object files. $(RESET)"
 
 fclean :
 	@ $(MAKE) -C ./libft fclean
-	@ $(MAKE) -C ./mlx fclean
+	@ $(MAKE) -C ./minilibx-linux clean
 	@ $(RM) $(OBJDIR) $(NAME)
 	@ echo "$(REMOVE) $(BLUE)Remove cub3D object files and $(NAME). $(RESET)"
 
