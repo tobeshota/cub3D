@@ -48,7 +48,7 @@ all : $(NAME)
 
 $(NAME): $(OBJS)
 	@ $(MAKE) -C ./libft
-	@ $(MAKE) -C ./minilibx-linux
+	@ $(MAKE) -C ./minilibx-linux 2>/dev/null
 	@ $(CC) $(CFLAGS) -o $@ $^ $(LIBFT)
 	@ printf "$(CHECK) $(BLUE)Compiling cub3D...%-50.50s\n$(RESET)"
 
