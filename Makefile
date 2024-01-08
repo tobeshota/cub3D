@@ -18,7 +18,7 @@ MAKE_DIRS = $(addprefix $(OBJDIR)/, $(MAKE_DIR))
 CFLAGS = -Wall -Wextra -Werror -MP -MMD -O3
 RM = rm -rf
 
-INC = -I./inc/ -I./libft/inc -I./mlx
+INC = -I./inc/ -I./libft/inc -I./minilibx-linux
 
 LIBFT = libft/libft.a
 
@@ -53,7 +53,8 @@ $(NAME): $(OBJS)
 	@ printf "$(CHECK) $(BLUE)Compiling cub3D...%-50.50s\n$(RESET)"
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
-	@ mkdir -p $(MAKE_DIRS)
+	-git clone https://github.com/42Paris/minilibx-linux.git
+	mkdir -p $(MAKE_DIRS)
 	@ $(CC) $(CFLAGS) $(INC) -o $@ -c $<
 	$(call progress)
 
