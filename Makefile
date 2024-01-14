@@ -1,14 +1,15 @@
-NAME = cub3D
+NAME			= cub3D
 
-SRC = main.c \
+MAIN_SRC		= main.c
+CHECK_ARG_SRC	= check_arg.c
+INIT_SRC		= init_map.c input.c set_map.c set_texture.c
 
-CHECK_ARG_SRC = check_arg.c \
+SRCDIR			= srcs
+SRCS			= $(addprefix $(SRCDIR)/main/, $(MAIN_SRC))
+SRCS			+= $(addprefix $(SRCDIR)/check_arg/, $(CHECK_ARG_SRC))
+SRCS			+= $(addprefix $(SRCDIR)/init/, $(INIT_SRC))
 
-SRCDIR = srcs
-SRCS = $(addprefix $(SRCDIR)/, $(SRC))
-SRCS += $(addprefix $(SRCDIR)/check_arg/, $(CHECK_ARG_SRC))
-
-MAKE_DIR = check_arg
+MAKE_DIR		= main init check_arg
 
 OBJDIR = objs
 OBJS = $(subst $(SRCDIR), $(OBJDIR), $(SRCS:.c=.o))
