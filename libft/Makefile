@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: toshota <toshota@student.42tokyo.jp>       +#+  +:+       +#+         #
+#    By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/26 19:52:48 by toshota           #+#    #+#              #
-#    Updated: 2023/10/21 12:55:03 by toshota          ###   ########.fr        #
+#    Updated: 2024/01/15 16:21:30 by csakamot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,7 @@ endif
 all:			$(NAME)
 
 $(NAME):		$(OBJS)
-	@ make -C $(PRINTF_DIR)
+	@ make -s -C $(PRINTF_DIR)
 	@ cp $(PRINTF_DIR)libftprintf.a $@
 	@ $(AR) $@ $^
 
@@ -54,14 +54,14 @@ $(OBJS_DIR)%.o : $(SRCS_DIR)%.c
 	@ $(CC) $(CFLAGS) -I $(INC_DIR) -c $< -o $@
 
 bonus:
-	@ make WITH_BONUS=1
+	@ make -s WITH_BONUS=1
 
 clean:
-	@ make clean -C $(PRINTF_DIR)
+	@ make -s clean -C $(PRINTF_DIR)
 	@ $(RM) $(OBJS_DIR)
 
 fclean:			clean
-	@ make fclean -C $(PRINTF_DIR)
+	@ make -s fclean -C $(PRINTF_DIR)
 	@ $(RM) $(NAME)
 
 re:				fclean all

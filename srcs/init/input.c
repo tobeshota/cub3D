@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/01/14 19:33:35 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/01/15 16:14:15 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,16 @@ static char	*input_map_src(int fd)
 	char	*one_line;
 	char	*map_src;
 
+	tmp = NULL;
+	map_src = NULL;
 	while (1)
 	{
 		one_line = get_next_line(fd);
 		if (one_line == NULL)
 			break ;
-		tmp = ft_strdup(map_src);
-		if (!tmp)
+		if (map_src)
+			tmp = ft_strdup(map_src);
+		if (map_src && !tmp)
 			return (perror(""), NULL);
 		if (map_src)
 			free(map_src);
@@ -58,6 +61,7 @@ void	input_map(t_map *map, int argc, char **argv)
 	map_src = input_map_src(fd);
 	if (!map_src)
 		return (exit(EXIT_FAILURE));
+	printf("%s\n", map_src);
 	set_texture_path(map, map_src);
 	set_map(map, map_src);
 	return ;

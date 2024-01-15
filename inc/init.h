@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/01/14 19:33:23 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/01/15 16:05:31 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdio.h>
 # include "../libft/inc/libft.h"
 # include "./define.h"
+# include "./utils.h"
 # include "./error.h"
 
 void	init_map(t_data *data, int argc, char **argv);

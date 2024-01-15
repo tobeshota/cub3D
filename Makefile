@@ -1,15 +1,19 @@
 NAME			= cub3D
 
 MAIN_SRC		= main.c
-CHECK_ARG_SRC	= check_arg.c
+CHECK_SRC		= check.c
 INIT_SRC		= init_map.c input.c set_map.c set_texture.c
+UTILS_SRC		= str_related.c
+ERROR_SRC		= error.c
 
 SRCDIR			= srcs
 SRCS			= $(addprefix $(SRCDIR)/main/, $(MAIN_SRC))
 SRCS			+= $(addprefix $(SRCDIR)/check_arg/, $(CHECK_ARG_SRC))
 SRCS			+= $(addprefix $(SRCDIR)/init/, $(INIT_SRC))
+SRCS			+= $(addprefix $(SRCDIR)/utils/, $(UTILS_SRC))
+SRCS			+= $(addprefix $(SRCDIR)/error/, $(ERROR_SRC))
 
-MAKE_DIR		= main init check_arg
+MAKE_DIR		= main init check utils error
 
 OBJDIR = objs
 OBJS = $(subst $(SRCDIR), $(OBJDIR), $(SRCS:.c=.o))
@@ -47,27 +51,29 @@ endef
 
 all : $(NAME)
 
-$(NAME): $(OBJS)
-	@ $(MAKE) -C ./libft
-	@ $(MAKE) -C ./minilibx-linux 2>/dev/null
+$(NAME): $(CCMLX) $(OBJS)
+	@ $(MAKE) -s -C ./libft
 	@ $(CC) $(CFLAGS) -o $@ $^ $(LIBFT)
 	@ printf "$(CHECK) $(BLUE)Compiling cub3D...%-50.50s\n$(RESET)"
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
-	-git clone https://github.com/42Paris/minilibx-linux.git
-	mkdir -p $(MAKE_DIRS)
+	@ mkdir -p $(MAKE_DIRS)
 	@ $(CC) $(CFLAGS) $(INC) -o $@ -c $<
 	$(call progress)
 
+$(CCMLX):
+	@ -git clone https://github.com/42Paris/minilibx-linux.git 2>/dev/null
+	@ $(MAKE) -s -C ./minilibx-linux 2>/dev/null
+
 clean :
-	@ $(MAKE) -C ./libft clean
-	@ $(MAKE) -C ./minilibx-linux clean
+	@ $(MAKE) -s -C ./libft clean
+	@ $(MAKE) -s -C ./minilibx-linux clean
 	@ $(RM) $(OBJDIR)
 	@ echo "$(REMOVE) $(BLUE)Remove cub3D object files. $(RESET)"
 
 fclean :
-	@ $(MAKE) -C ./libft fclean
-	@ $(MAKE) -C ./minilibx-linux clean
+	@ $(MAKE) -s -C ./libft fclean
+	@ $(MAKE) -s -C ./minilibx-linux clean
 	@ $(RM) $(OBJDIR) $(NAME)
 	@ echo "$(REMOVE) $(BLUE)Remove cub3D object files and $(NAME). $(RESET)"
 
