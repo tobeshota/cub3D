@@ -6,13 +6,13 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/01/16 16:46:36 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/01/17 05:50:53 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/utils.h"
 
-bool	judge_map_chara(const char chara)
+bool	judge_map_chara(char chara)
 {
 	if (chara != WALL
 		&& chara != FLOOR

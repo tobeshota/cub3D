@@ -6,32 +6,34 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/01/16 17:13:56 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/01/17 06:13:17 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/init.h"
 
-static bool	find_map_data_line(const char *map_src, size_t *index)
+static bool	find_map_data_line(char *map_src, size_t *index)
 {
 	bool	flag;
 
 	flag = false;
-	while (map_src[*index] != '\0'
-		|| (*index != 0 && map_src[*index - 1] != '\n'))
+	while (map_src[*index] != '\0' && map_src[*index] != '\n')
 	{
 		if (judge_map_chara(map_src[*index]))
+		{
+			*index += ft_line_len(&map_src[*index]);
 			return (false);
-		else if (!judge_map_chara(map_src[*index]) && map_src[*index] != ' ')
+		}
+		else if (!judge_map_chara(map_src[*index]))
 			flag = true;
-		*index++;
+		*index += 1;
 	}
 	if (!flag)
 		return (false);
 	return (true);
 }
 
-static size_t	nbr_map_line(const char *map_src)
+static size_t	nbr_map_line(char *map_src)
 {
 	size_t	index;
 	bool	flag;
@@ -45,15 +47,52 @@ static size_t	nbr_map_line(const char *map_src)
 		flag = find_map_data_line(map_src, &index);
 		if (map_row && !flag)
 			break ;
-		else
+		else if (flag)
 			map_row++;
+		index++;
 	}
 	return (map_row);
 }
 
-static char	**create_map_data(char *map_src, size_t map_row)
+static size_t	find_map_start_position(char *map_src)
 {
-	
+	size_t	index;
+	size_t	start;
+	bool	flag;
+
+	index = 0;
+	start = 0;
+	flag = false;
+	while (map_src[index] != '\0')
+	{
+		start = index;
+		flag = find_map_data_line(map_src, &index);
+		if (flag)
+			break ;
+		index++;
+	}
+	return (start);
+}
+
+static void	create_map_data(char *map_src, char **map, size_t map_row)
+{
+	size_t	count;
+	size_t	start;
+	size_t	line_len;
+
+	count = 0;
+	start = find_map_start_position(map_src);
+	while (count < map_row)
+	{
+		line_len = ft_line_len(&map_src[start]);
+		map[count] = ft_substr(map_src, start, line_len);
+		if (!map[count])
+			return (print_error_msg(MALLOC_ERROR));
+		start += line_len + 1;
+		count++;
+	}
+	map[count] = NULL;
+	return ;
 }
 
 char	**input_map(char *map_src)
@@ -66,6 +105,6 @@ char	**input_map(char *map_src)
 	result = ft_calloc(sizeof(char *), map_row + 1);
 	if (!result)
 		return (print_error_msg(MALLOC_ERROR), NULL);
-	result = create_map_data(map_src, map_row);
+	create_map_data(map_src, result, map_row);
 	return (result);
 }

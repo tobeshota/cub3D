@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/01/16 16:44:10 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/01/17 05:46:20 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@
 # include <stdlib.h>
 # include <stdbool.h>
 
-# define WALL	"1"
-# define FLOOR	"0"
-# define NORTH	"N"
-# define SOUTH	"S"
-# define WEST	"W"
-# define EAST	"E"
+# define WALL	'1'
+# define FLOOR	'0'
+# define NORTH	'N'
+# define SOUTH	'S'
+# define WEST	'W'
+# define EAST	'E'
 # define NO		"NO"
 # define SO		"SO"
 # define WE		"WE"

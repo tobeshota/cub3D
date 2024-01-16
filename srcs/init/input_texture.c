@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   input_rgb.c                                        :+:      :+:    :+:   */
+/*   input_texture.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/01/16 16:07:29 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/01/17 04:51:12 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	*input_texture_rgb(char *map_src, size_t position)
 	path_len = 0;
 	rgb_color = NULL;
 	position += blank_pass(&map_src[position + 1]) + 1;
-	path_len = ft_rgb_len(&map_src[position]);
+	path_len = ft_line_len(&map_src[position]);
 	tmp = ft_calloc(sizeof(char), path_len + 1);
 	if (!tmp)
 		return (print_error_msg(MALLOC_ERROR), NULL);

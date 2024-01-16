@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/01/16 16:03:04 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/01/17 04:51:12 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ size_t	ft_path_len(char *str)
 	return (len);
 }
 
-size_t	ft_rgb_len(char *str)
+size_t	ft_line_len(char *str)
 {
 	size_t	len;
 
