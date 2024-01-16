@@ -1,14 +1,14 @@
 NAME			= cub3D
 
 MAIN_SRC		= main.c
-CHECK_SRC		= check.c
-INIT_SRC		= init_map.c input.c set_map.c set_texture.c
-UTILS_SRC		= str_related.c
+CHECK_SRC		= check_set_texture_path.c check_input_texture_path.c check_rgb_value.c
+INIT_SRC		= init_map.c input.c input_texture.c input_map.c set_map.c set_texture_path.c
+UTILS_SRC		= str_related.c length.c judge.c
 ERROR_SRC		= error.c
 
 SRCDIR			= srcs
 SRCS			= $(addprefix $(SRCDIR)/main/, $(MAIN_SRC))
-SRCS			+= $(addprefix $(SRCDIR)/check_arg/, $(CHECK_ARG_SRC))
+SRCS			+= $(addprefix $(SRCDIR)/check/, $(CHECK_SRC))
 SRCS			+= $(addprefix $(SRCDIR)/init/, $(INIT_SRC))
 SRCS			+= $(addprefix $(SRCDIR)/utils/, $(UTILS_SRC))
 SRCS			+= $(addprefix $(SRCDIR)/error/, $(ERROR_SRC))

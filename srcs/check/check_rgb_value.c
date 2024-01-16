@@ -1,30 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   check_rgb_value.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/01/15 17:04:53 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/01/16 15:38:58 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include "../../inc/check.h"
 
-# include <fcntl.h>
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <stdlib.h>
-# include <stdio.h>
-# include <unistd.h>
-# include "../libft/inc/libft.h"
-# include "../minilibx-linux/mlx.h"
-# include "./define.h"
-# include "./init.h"
-# include "./check.h"
-# include "./utils.h"
-# include "./error.h"
+bool	check_rgb_value(char **tmp)
+{
+	size_t	row;
+	size_t	col;
+	bool	flag;
 
-#endif
+	row = 0;
+	while (tmp[row])
+	{
+		flag = false;
+		col = 0;
+		while (tmp[row][col] != '\0')
+		{
+			if (!ft_isdigit(tmp[row][col])
+			&& tmp[row][col] != ' '
+			&& tmp[row][col] != '	')
+				return (print_error_msg("Invalid rgb color."), false);
+			if (ft_isdigit(tmp[row][col]))
+				flag = true;
+			if (flag && (tmp[row][col] == ' ' || tmp[row][col] == '	'))
+				return (print_error_msg("No space between numbers."), false);
+			col++;
+		}
+		row++;
+	}
+	return (true);
+}

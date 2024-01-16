@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/01/15 16:07:33 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/01/16 16:46:42 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,15 @@
 # define UTILS_H
 
 # include <unistd.h>
+# include <stdbool.h>
 # include "../libft/inc/libft.h"
+# include "./define.h"
 
-int	ft_strrncmp(const char *s1, const char *s2, size_t n);
+bool	judge_map_chara(const char chara);
+size_t	blank_pass(char *str);
+size_t	ft_array_len(char **array);
+size_t	ft_path_len(char *str);
+size_t	ft_rgb_len(char *str);
+int		ft_strrncmp(const char *s1, const char *s2, size_t n);
 
 #endif
