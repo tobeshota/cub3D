@@ -1,30 +1,53 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   length.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/01/15 17:04:53 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/01/17 04:51:12 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include "../../inc/utils.h"
 
-# include <fcntl.h>
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <stdlib.h>
-# include <stdio.h>
-# include <unistd.h>
-# include "../libft/inc/libft.h"
-# include "../minilibx-linux/mlx.h"
-# include "./define.h"
-# include "./init.h"
-# include "./check.h"
-# include "./utils.h"
-# include "./error.h"
+size_t	ft_array_len(char **array)
+{
+	size_t	len;
 
-#endif
+	len = 0;
+	if (!array)
+		return (len);
+	while (array[len])
+		len++;
+	return (len);
+}
+
+size_t	ft_path_len(char *str)
+{
+	size_t	len;
+
+	len = 0;
+	if (!str)
+		return (len);
+	while (str[len] != '\0'
+		&& str[len] != '\n'
+		&& str[len] != ' '
+		&& str[len] != '	')
+		len++;
+	return (len);
+}
+
+size_t	ft_line_len(char *str)
+{
+	size_t	len;
+
+	len = 0;
+	if (!str)
+		return (len);
+	while (str[len] != '\0'
+		&& str[len] != '\n')
+		len++;
+	return (len);
+}

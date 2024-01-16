@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   error.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/01/15 17:04:53 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/01/15 16:42:18 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef ERROR_H
+# define ERROR_H
 
-# include <fcntl.h>
-# include <sys/types.h>
-# include <sys/stat.h>
+# define INVALID_ARGC "Invalid number of argument."
+# define NOT_CUB_MAP "The extension is not .cub."
+# define MALLOC_ERROR "malloc error."
+
 # include <stdlib.h>
 # include <stdio.h>
-# include <unistd.h>
 # include "../libft/inc/libft.h"
-# include "../minilibx-linux/mlx.h"
-# include "./define.h"
-# include "./init.h"
-# include "./check.h"
-# include "./utils.h"
-# include "./error.h"
+
+void	print_error_msg(char *errorstr);
 
 #endif

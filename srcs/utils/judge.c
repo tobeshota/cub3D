@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   judge.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/01/15 17:04:53 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/01/17 05:50:53 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include "../../inc/utils.h"
 
-# include <fcntl.h>
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <stdlib.h>
-# include <stdio.h>
-# include <unistd.h>
-# include "../libft/inc/libft.h"
-# include "../minilibx-linux/mlx.h"
-# include "./define.h"
-# include "./init.h"
-# include "./check.h"
-# include "./utils.h"
-# include "./error.h"
-
-#endif
+bool	judge_map_chara(char chara)
+{
+	if (chara != WALL
+		&& chara != FLOOR
+		&& chara != NORTH
+		&& chara != SOUTH
+		&& chara != EAST
+		&& chara != WEST
+		&& chara != ' ')
+		return (true);
+	return (false);
+}
