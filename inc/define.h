@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/01/17 05:46:20 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/01/17 20:29:43 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,16 @@
 # define EA		"EA"
 # define FL		"F"
 # define CE		"C"
+
+typedef struct s_mark{
+	size_t	no;
+	size_t	so;
+	size_t	we;
+	size_t	ea;
+	size_t	fl;
+	size_t	ce;
+	size_t	map;
+}				t_mark;
 
 typedef struct s_map{
 	char	**map;

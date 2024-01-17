@@ -6,13 +6,13 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/01/16 15:38:58 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/01/17 10:28:17 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/check.h"
 
-bool	check_rgb_value(char **tmp)
+bool	check_rgb_str(char **tmp)
 {
 	size_t	row;
 	size_t	col;
@@ -28,7 +28,7 @@ bool	check_rgb_value(char **tmp)
 			if (!ft_isdigit(tmp[row][col])
 			&& tmp[row][col] != ' '
 			&& tmp[row][col] != '	')
-				return (print_error_msg("Invalid rgb color."), false);
+				return (print_error_msg("Invalid rgb value."), false);
 			if (ft_isdigit(tmp[row][col]))
 				flag = true;
 			if (flag && (tmp[row][col] == ' ' || tmp[row][col] == '	'))
@@ -37,5 +37,21 @@ bool	check_rgb_value(char **tmp)
 		}
 		row++;
 	}
+	return (true);
+}
+
+bool	check_rgb_value(int *color)
+{
+	size_t	index;
+
+	index = 0;
+	while (color[index] != -1)
+	{
+		if (0 > color[index] || color[index] > 255)
+			return (print_error_msg("Invalid rgb value."), false);
+		index++;
+	}
+	if (index != 3)
+		return (print_error_msg("Invalid rgb value."), false);
 	return (true);
 }

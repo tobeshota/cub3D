@@ -1,7 +1,7 @@
 NAME			= cub3D
 
 MAIN_SRC		= main.c
-CHECK_SRC		= check_set_texture_path.c check_input_texture_path.c check_rgb_value.c
+CHECK_SRC		= check_set_texture_path.c  check_set_map.c check_input_texture_path.c check_rgb_value.c
 INIT_SRC		= init_map.c input.c input_texture.c input_map.c set_map.c set_texture_path.c
 UTILS_SRC		= str_related.c length.c judge.c
 ERROR_SRC		= error.c
