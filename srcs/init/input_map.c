@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/01/17 06:13:17 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/01/17 20:39:29 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,8 @@ static size_t	find_map_start_position(char *map_src)
 	return (start);
 }
 
-static void	create_map_data(char *map_src, char **map, size_t map_row)
+static void	create_map_data(char *map_src,
+			t_mark *mark, char **map, size_t map_row)
 {
 	size_t	count;
 	size_t	start;
@@ -82,6 +83,7 @@ static void	create_map_data(char *map_src, char **map, size_t map_row)
 
 	count = 0;
 	start = find_map_start_position(map_src);
+	mark->map = start;
 	while (count < map_row)
 	{
 		line_len = ft_line_len(&map_src[start]);
@@ -95,7 +97,7 @@ static void	create_map_data(char *map_src, char **map, size_t map_row)
 	return ;
 }
 
-char	**input_map(char *map_src)
+char	**input_map(char *map_src, t_mark *mark)
 {
 	size_t	map_row;
 	char	**result;
@@ -105,6 +107,6 @@ char	**input_map(char *map_src)
 	result = ft_calloc(sizeof(char *), map_row + 1);
 	if (!result)
 		return (print_error_msg(MALLOC_ERROR), NULL);
-	create_map_data(map_src, result, map_row);
+	create_map_data(map_src, mark, result, map_row);
 	return (result);
 }
