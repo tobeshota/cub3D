@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/01/16 15:50:22 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/01/17 10:28:56 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ static char	*set_direction_texture(char *map_src, char *direction)
 	if (check_input_nbrs(map_src, direction, &position) != 1)
 		return (NULL);
 	result = input_texture_path(map_src, position);
-	// printf("%s position:%ld\n", direction, position);
 	return (result);
 }
 
@@ -31,13 +30,11 @@ static int	*set_rgb_color(char *map_src, char *updown)
 	size_t	position;
 	int		*rgb_color;
 
-
 	position = 0;
 	rgb_color = NULL;
 	if (check_input_nbrs(map_src, updown, &position) != 1)
 		return (NULL);
 	rgb_color = input_texture_rgb(map_src, position);
-	// printf("%s position:%ld\n", updown, position);
 	return (rgb_color);
 }
 

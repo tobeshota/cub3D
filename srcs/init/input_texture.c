@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/01/17 04:51:12 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/01/17 10:08:37 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,9 @@ static int	*input_rgb_value(char *str)
 	tmp = ft_split(str, ',');
 	if (!tmp)
 		return (print_error_msg(MALLOC_ERROR), NULL);
-	check_rgb_value(tmp);
+	check_rgb_str(tmp);
 	rgb_value = input_value(tmp);
+	check_rgb_value(rgb_value);
 	return (rgb_value);
 }
 
