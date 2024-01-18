@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/01/17 20:40:34 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/01/18 10:50:24 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,29 +23,21 @@ static bool	check_map_path(int argc, char **argv)
 
 static char	*input_map_src(int fd)
 {
-	char	*tmp;
 	char	*one_line;
 	char	*map_src;
 
-	tmp = NULL;
 	map_src = NULL;
 	while (1)
 	{
 		one_line = get_next_line(fd);
 		if (one_line == NULL)
 			break ;
-		if (map_src)
-			tmp = ft_strdup(map_src);
-		if (map_src && !tmp)
-			return (perror(""), NULL);
-		if (map_src)
-			free(map_src);
-		map_src = ft_strjoin(tmp, one_line);
+		map_src = str_connect(map_src, one_line);
 		if (!map_src)
-			return (perror(""), NULL);
-		free(tmp);
-		free(one_line);
+			return (NULL);
 	}
+	if (!map_src)
+		return (print_error_msg("Empty map data."), NULL);
 	return (map_src);
 }
 
@@ -65,5 +57,6 @@ void	input_map_and_texture(t_map *map, int argc, char **argv)
 		return (exit(EXIT_FAILURE));
 	set_texture_path(map, &mark, map_src);
 	set_map(map, &mark, map_src);
+	free(map_src);
 	return ;
 }

@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/01/17 20:39:29 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/01/18 10:40:26 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ static size_t	nbr_map_line(char *map_src)
 			break ;
 		else if (flag)
 			map_row++;
-		index++;
+		if (map_src[index] != '\0')
+			index++;
 	}
 	return (map_row);
 }

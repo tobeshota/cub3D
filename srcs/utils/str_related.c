@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/01/16 16:02:53 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/01/18 10:50:37 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,28 @@ size_t	blank_pass(char *str)
 		result++;
 	return (result);
 }
+
+char	*str_connect(char *str, char *addstr)
+{
+	char	*tmp;
+	char	*result;
+
+	tmp = NULL;
+	result = NULL;
+	if (str)
+		tmp = ft_strdup(str);
+	if (str && !tmp)
+		return (perror(""), NULL);
+	if (str)
+		free(str);
+	result = ft_strjoin(tmp, addstr);
+	if (!result)
+		return (perror(""), NULL);
+	free(tmp);
+	free(addstr);
+	return (result);
+}
+
 
 int	ft_strrncmp(const char *s1, const char *s2, size_t n)
 {

@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/01/17 10:08:37 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/01/18 11:03:30 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ static int	*input_rgb_value(char *str)
 		return (print_error_msg(MALLOC_ERROR), NULL);
 	check_rgb_str(tmp);
 	rgb_value = input_value(tmp);
+	free_str_array(tmp);
 	check_rgb_value(rgb_value);
 	return (rgb_value);
 }
@@ -79,5 +80,6 @@ int	*input_texture_rgb(char *map_src, size_t position)
 		return (print_error_msg(MALLOC_ERROR), NULL);
 	ft_strlcpy(tmp, &map_src[position], path_len + 1);
 	rgb_color = input_rgb_value(tmp);
+	free(tmp);
 	return (rgb_color);
 }
