@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/01/17 10:28:00 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/01/18 11:24:42 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static char	*error_msg_jump_no_count(char *direction)
 
 	tmp = ft_strjoin("NO ", direction);
 	result = ft_strjoin(tmp, "_texture path.");
+	free(tmp);
 	if (!tmp || !result)
 		return (exit(EXIT_FAILURE), NULL);
 	return (result);
@@ -31,6 +32,7 @@ static char	*error_msg_jump_counts(char *direction)
 
 	tmp = ft_strjoin("There are multiple ", direction);
 	result = ft_strjoin(tmp, "_texture paths.");
+	free(tmp);
 	if (!tmp || !result)
 		return (exit(EXIT_FAILURE), NULL);
 	return (result);

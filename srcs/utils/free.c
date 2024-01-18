@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/01/18 11:09:26 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/01/18 11:22:04 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,8 @@ void	free_str_array(char **array)
 	return ;
 }
 
-void	free_data(t_data *data)
+void	free_map(t_map *map)
 {
-	t_map	*map;
-
-	if (!data->map)
-		return ;
-	map = data->map;
 	if (map->no_texture)
 		free (map->no_texture);
 	if (map->so_texture)
@@ -50,5 +45,13 @@ void	free_data(t_data *data)
 	if (map->map)
 		free_str_array(map->map);
 	free(map);
+	return ;
+}
+
+void	free_data(t_data *data)
+{
+	if (!data->map)
+		return ;
+	free_map(data->map);
 	return ;
 }

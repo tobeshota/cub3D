@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/01/18 11:07:14 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/01/18 11:22:11 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ size_t	ft_path_len(char *str);
 size_t	ft_line_len(char *str);
 int		ft_strrncmp(const char *s1, const char *s2, size_t n);
 void	free_data(t_data *data);
+void	free_map(t_map *map);
 void	free_str_array(char **array);
 
 #endif
