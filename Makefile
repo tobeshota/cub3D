@@ -22,9 +22,9 @@ MAKE_DIRS = $(addprefix $(OBJDIR)/, $(MAKE_DIR))
 CFLAGS = -Wall -Wextra -Werror -MP -MMD -O3
 RM = rm -rf
 
-INC = -I inc/ -I libft/inc -Iminilibx-linux
+INC = -I inc/ -I libft/inc -Iminilibx-linux -I/usr/include
 
-LIBFT = libft/libft.a -Lminilibx-linux
+LIBFT = libft/libft.a -Lminilibx-linux -lmlx_Linux -L/usr/lib -lX11 -lXext
 
 ifeq ($(MAKECMDGOALS), address)
 	CFLAGS += -g3 -fsanitize=address
@@ -50,7 +50,7 @@ endef
 
 all : $(NAME)
 
-$(NAME): $(CCMLX) $(OBJS)
+$(NAME):$(OBJS)
 	@ $(MAKE) -s -C ./libft
 	@ -git clone https://github.com/42Paris/minilibx-linux.git 2>/dev/null
 	@ $(MAKE) -s -C ./minilibx-linux 2>/dev/null
