@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: toshota <toshota@student.42.fr>            +#+  +:+       +#+        */
+/*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/01/20 16:05:03 by toshota          ###   ########.fr       */
+/*   Updated: 2024/01/20 19:28:37 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,13 @@ void	input_map_and_texture(t_map *map, int argc, char **argv)
 	if (fd == -1)
 		return (perror(""), exit(EXIT_FAILURE));
 	map_src = input_map_src(fd);
+	if (!close(fd))
+		return (perror(""), exit(EXIT_FAILURE));
 	if (!map_src)
+	{
+		close(fd);
 		return (exit(EXIT_FAILURE));
+	}
 	set_texture_path(map, &mark, map_src);
 	set_map(map, &mark, map_src);
 	free(map_src);
