@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/01/20 19:28:37 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/01/20 19:37:21 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	input_map_and_texture(t_map *map, int argc, char **argv)
 	if (fd == -1)
 		return (perror(""), exit(EXIT_FAILURE));
 	map_src = input_map_src(fd);
-	if (!close(fd))
+	if (close(fd) == -1)
 		return (perror(""), exit(EXIT_FAILURE));
 	if (!map_src)
 	{
