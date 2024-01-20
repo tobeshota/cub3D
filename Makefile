@@ -30,6 +30,14 @@ ifeq ($(MAKECMDGOALS), address)
 	CFLAGS += -g3 -fsanitize=address
 endif
 
+ifeq        ($(shell uname), Linux)
+            INC = -I inc/ -I libft/inc -Iminilibx-linux -I/usr/include
+            LIBFT = libft/libft.a -Lminilibx-linux -lmlx_Linux -L/usr/lib -lX11 -lXext
+else
+            INC = -I inc/ -I/usr/include -I libft/inc -Iminilibx-linux -Imlx
+            LIBFT = libft/libft.a -Lmlx -lmlx -framework OpenGL -framework AppKit
+endif
+
 CHECK		= \033[32m[✔]\033[0m
 REMOVE		= \033[31m[✘]\033[0m
 GENERATE	= \033[33m[➤]\033[0m
