@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: toshota <toshota@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/01/20 16:32:18 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/01/20 17:44:50 by toshota          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,10 @@ int	main(int argc, char **argv)
 	init_map(&data, argc, argv);
 	print_map_variable(&data);
 	init_mlx(&data);
+	// texturesを読み込む(csakamot)
+	// init_textures(&data);
+	// gameをはじめる(toshota)
+	// start_game(&data);
 	free_data(&data);
 	return (EXIT_SUCCESS);
 }
