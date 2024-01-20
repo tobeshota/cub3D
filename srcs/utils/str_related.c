@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/01/18 10:50:37 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/01/20 13:42:07 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ char	*str_connect(char *str, char *addstr)
 	free(addstr);
 	return (result);
 }
-
 
 int	ft_strrncmp(const char *s1, const char *s2, size_t n)
 {

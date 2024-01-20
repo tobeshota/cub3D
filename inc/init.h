@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/01/17 20:36:27 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/01/20 13:43:31 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,14 @@
 # include <stdbool.h>
 # include <stdio.h>
 # include "../libft/inc/libft.h"
+# include "../minilibx-linux/mlx.h"
 # include "./define.h"
 # include "./check.h"
 # include "./utils.h"
 # include "./error.h"
 
 void	init_map(t_data *data, int argc, char **argv);
+void	init_mlx(t_data *data);
 void	input_map_and_texture(t_map *map, int argc, char **argv);
 void	set_map(t_map *map, t_mark *mark, char *map_src);
 void	set_texture_path(t_map *map, t_mark *mark, char *map_src);
