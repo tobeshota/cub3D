@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: toshota <toshota@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/01/15 17:04:53 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/01/20 17:54:19 by toshota          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
-# include "../libft/inc/libft.h"
-# include "../minilibx-linux/mlx.h"
-# include "./define.h"
-# include "./init.h"
-# include "./check.h"
-# include "./utils.h"
-# include "./error.h"
+# include "libft.h"
+# include "mlx.h"
+# include "define.h"
+# include "init.h"
+# include "check.h"
+# include "utils.h"
+# include "error.h"
 
 #endif

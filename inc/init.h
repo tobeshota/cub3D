@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: toshota <toshota@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/01/20 13:43:31 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/01/20 17:55:45 by toshota          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 
 # include <stdbool.h>
 # include <stdio.h>
-# include "../libft/inc/libft.h"
-# include "../minilibx-linux/mlx.h"
-# include "./define.h"
-# include "./check.h"
-# include "./utils.h"
-# include "./error.h"
+# include "libft.h"
+# include "mlx.h"
+# include "define.h"
+# include "check.h"
+# include "utils.h"
+# include "error.h"
 
 void	init_map(t_data *data, int argc, char **argv);
 void	init_mlx(t_data *data);
