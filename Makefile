@@ -2,7 +2,7 @@ NAME			= cub3D
 
 MAIN_SRC		= main.c
 CHECK_SRC		= check_set_texture_path.c  check_set_map.c check_input_texture_path.c check_rgb_value.c
-INIT_SRC		= init_map.c input.c input_texture.c input_map.c set_map.c set_texture_path.c
+INIT_SRC		= init_map.c input.c input_texture.c input_map.c set_map.c set_texture_path.c init_mlx.c
 UTILS_SRC		= str_related.c length.c judge.c free.c
 ERROR_SRC		= error.c
 
@@ -23,9 +23,9 @@ MAKE_DIRS = $(addprefix $(OBJDIR)/, $(MAKE_DIR))
 CFLAGS = -Wall -Wextra -Werror -MP -MMD -O3
 RM = rm -rf
 
-INC = -I./inc/ -I./libft/inc -I./minilibx-linux
+INC = -I./inc/ -I./libft/inc -Iminilibx-linux  -Iusr/X11/include
 
-LIBFT = libft/libft.a
+LIBFT = libft/libft.a -Lminilibx-linux -Lusr/X11/lib
 
 ifeq ($(MAKECMDGOALS), address)
 	CFLAGS += -g3 -fsanitize=address
@@ -57,13 +57,11 @@ $(NAME): $(CCMLX) $(OBJS)
 	@ printf "$(CHECK) $(BLUE)Compiling cub3D...%-50.50s\n$(RESET)"
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
+	-git clone https://github.com/42Paris/minilibx-linux.git 2>/dev/null
+	$(MAKE) -s -C ./minilibx-linux
 	@ mkdir -p $(MAKE_DIRS)
 	@ $(CC) $(CFLAGS) $(INC) -o $@ -c $<
 	$(call progress)
-
-$(CCMLX):
-	@ -git clone https://github.com/42Paris/minilibx-linux.git 2>/dev/null
-	@ $(MAKE) -s -C ./minilibx-linux 2>/dev/null
 
 clean :
 	@ $(MAKE) -s -C ./libft clean

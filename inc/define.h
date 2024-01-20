@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/01/17 20:29:43 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/01/20 13:35:20 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,15 @@ typedef struct s_map{
 	int		*ce_color;
 }				t_map;
 
+typedef struct s_game{
+	void	*mlx_ptr;
+	void	*win_ptr;
+}				t_game;
+
 typedef struct s_data{
 	int		tmp;
 	t_map	*map;
+	t_game	*game;
 }				t_data;
 
 #endif
