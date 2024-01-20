@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/01/20 16:32:24 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/01/20 18:29:57 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@ void	init_mlx(t_data *data)
 		return (print_error_msg("mlx_init error."),
 			free_data(data),
 			exit(EXIT_FAILURE));
+	data->game = game;
 	return ;
 }
