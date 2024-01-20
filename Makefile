@@ -38,6 +38,12 @@ else
             LIBFT = libft/libft.a -Lmlx -lmlx -framework OpenGL -framework AppKit
 endif
 
+ifeq		(,$(wildcard minilibx-linux))
+			GITMLX = git clone https://github.com/42Paris/minilibx-linux.git
+else
+			GITMLX = @echo "minilibx-linux already exists, skipping clone."
+endif
+
 CHECK		= \033[32m[✔]\033[0m
 REMOVE		= \033[31m[✘]\033[0m
 GENERATE	= \033[33m[➤]\033[0m
@@ -60,8 +66,8 @@ all : $(NAME)
 
 $(NAME):$(OBJS)
 	@ $(MAKE) -s -C ./libft
-	@ -git clone https://github.com/42Paris/minilibx-linux.git 2>/dev/null
-	@ $(MAKE) -s -C ./minilibx-linux 2>/dev/null
+	$(GITMLX)
+	@ $(MAKE) -s -C ./minilibx-linux 2>/dev/null 1>/dev/null
 	@ $(CC) $(CFLAGS) $(INC) -o $@ $^ $(LIBFT)
 	@ printf "$(CHECK) $(BLUE)Compiling cub3D...%-50.50s\n$(RESET)"
 
@@ -72,13 +78,13 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.c
 
 clean :
 	@ $(MAKE) -s -C ./libft clean
-	@ $(MAKE) -s -C ./minilibx-linux clean
+	@ $(MAKE) -s -C ./minilibx-linux clean 1>/dev/null
 	@ $(RM) $(OBJDIR)
 	@ echo "$(REMOVE) $(BLUE)Remove cub3D object files. $(RESET)"
 
 fclean :
 	@ $(MAKE) -s -C ./libft fclean
-	@ $(MAKE) -s -C ./minilibx-linux clean
+	@ $(MAKE) -s -C ./minilibx-linux clean 1>/dev/null
 	@ $(RM) $(OBJDIR) $(NAME)
 	@ echo "$(REMOVE) $(BLUE)Remove cub3D object files and $(NAME). $(RESET)"
 
