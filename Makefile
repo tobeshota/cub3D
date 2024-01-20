@@ -22,10 +22,6 @@ MAKE_DIRS = $(addprefix $(OBJDIR)/, $(MAKE_DIR))
 CFLAGS = -Wall -Wextra -Werror -MP -MMD -O3
 RM = rm -rf
 
-INC = -I inc/ -I libft/inc -Iminilibx-linux -I/usr/include
-
-LIBFT = libft/libft.a -Lminilibx-linux -lmlx_Linux -L/usr/lib -lX11 -lXext
-
 ifeq ($(MAKECMDGOALS), address)
 	CFLAGS += -g3 -fsanitize=address
 endif
@@ -35,7 +31,7 @@ ifeq        ($(shell uname), Linux)
             LIBFT = libft/libft.a -Lminilibx-linux -lmlx_Linux -L/usr/lib -lX11 -lXext
 else
             INC = -I inc/ -I/usr/include -I libft/inc -Iminilibx-linux -Imlx
-            LIBFT = libft/libft.a -Lmlx -lmlx -framework OpenGL -framework AppKit
+            LIBFT = libft/libft.a -lmlx -framework OpenGL -framework AppKit
 endif
 
 ifeq		(,$(wildcard minilibx-linux))
