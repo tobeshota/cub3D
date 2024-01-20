@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   set_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: toshota <toshota@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/01/17 20:44:48 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/01/20 16:05:07 by toshota          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/init.h"
+#include "init.h"
 
 void	set_map(t_map *map, t_mark *mark, char *map_src)
 {

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   judge.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: toshota <toshota@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/01/17 05:50:53 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/01/20 16:23:42 by toshota          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/utils.h"
+#include "utils.h"
 
 bool	judge_map_chara(char chara)
 {

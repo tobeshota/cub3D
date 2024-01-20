@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   input_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: toshota <toshota@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/01/18 10:40:26 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/01/20 16:03:34 by toshota          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/init.h"
+#include "init.h"
 
 static bool	find_map_data_line(char *map_src, size_t *index)
 {

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   check_set_map.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: toshota <toshota@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/01/17 20:48:55 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/01/20 16:23:02 by toshota          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/check.h"
+#include "check.h"
 
 bool	check_data_position(t_mark *mark)
 {

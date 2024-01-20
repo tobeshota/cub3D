@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: toshota <toshota@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/01/20 15:48:52 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/01/20 16:02:21 by toshota          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // #include <libc.h>
-#include "../../inc/cub3d.h"
+#include "cub3d.h"
 
 static void	print_map_variable(t_data *data)
 {
