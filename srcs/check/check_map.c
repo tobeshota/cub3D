@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/01/20 19:41:12 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/01/23 22:37:36 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 static bool	empty_map_check(t_map *map)
 {
+	if (!*(map->map))
+		return (print_error_msg("There is no map."), true);
 	return (false);
 }
 
