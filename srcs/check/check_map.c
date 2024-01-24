@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/01/24 11:43:37 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/01/24 21:19:46 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ static bool	bfs_map_check(t_map *map)
 	{
 		bfs.flag = false;
 		exe = false;
+		bfs.x = 0;
 		while (map->map[bfs.y][bfs.x] != '\0')
 		{
 			if (map->map[bfs.y][bfs.x] == '0')
@@ -74,11 +75,38 @@ static bool	bfs_map_check(t_map *map)
 	return (false);
 }
 
+static void	retrun_bfs_map(t_map *map)
+{
+	size_t	row;
+	size_t	col;
+
+	row = 0;
+	while (map->map[row])
+	{
+		col = 0;
+		while (map->map[row][col] != '\0')
+		{
+			if (map->map[row][col] == '0' - 1
+			|| map->map[row][col] == NORTH - 1
+			|| map->map[row][col] == SOUTH - 1
+			|| map->map[row][col] == WEST - 1
+			|| map->map[row][col] == EAST - 1)
+				map->map[row][col]++;
+			col++;
+		}
+		row++;
+	}
+	return ;
+}
+
 bool	check_map(t_map *map)
 {
 	if (empty_map_check(map))
 		return (false);
 	if (bfs_map_check(map))
 		return (false);
+	for (int i = 0; map->map[i]; i++)
+		printf("%s\n", map->map[i]);
+	retrun_bfs_map(map);
 	return (true);
 }

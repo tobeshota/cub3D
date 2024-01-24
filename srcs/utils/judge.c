@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/01/24 11:39:29 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/01/24 21:12:13 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 bool	judge_directon_chara(char chara)
 {
 	if (chara == NORTH
-	|| chara == SOUTH
-	|| chara == WEST
-	|| chara == EAST)
+		|| chara == SOUTH
+		|| chara == WEST
+		|| chara == EAST)
 		return (true);
 	return (false);
 }
