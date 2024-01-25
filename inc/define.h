@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/01/20 13:35:20 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/01/24 10:45:22 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,12 @@ typedef struct s_mark{
 	size_t	ce;
 	size_t	map;
 }				t_mark;
+
+typedef struct s_bfs{
+	bool	flag;
+	size_t	x;
+	size_t	y;
+}				t_bfs;
 
 typedef struct s_map{
 	char	**map;

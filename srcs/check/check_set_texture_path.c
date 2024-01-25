@@ -3,38 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   check_set_texture_path.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: toshota <toshota@student.42.fr>            +#+  +:+       +#+        */
+/*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/01/20 16:22:58 by toshota          ###   ########.fr       */
+/*   Updated: 2024/01/23 22:27:20 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "check.h"
 
-static char	*error_msg_jump_no_count(char *direction)
+static char	*branch_error_msg_no_count(char *direction)
 {
 	char	*tmp;
 	char	*result;
 
 	tmp = ft_strjoin("NO ", direction);
 	result = ft_strjoin(tmp, "_texture path.");
-	free(tmp);
 	if (!tmp || !result)
 		return (exit(EXIT_FAILURE), NULL);
+	free(tmp);
 	return (result);
 }
 
-static char	*error_msg_jump_counts(char *direction)
+static char	*branch_error_msg_counts(char *direction)
 {
 	char	*tmp;
 	char	*result;
 
 	tmp = ft_strjoin("There are multiple ", direction);
 	result = ft_strjoin(tmp, "_texture paths.");
-	free(tmp);
 	if (!tmp || !result)
 		return (exit(EXIT_FAILURE), NULL);
+	free(tmp);
 	return (result);
 }
 
@@ -61,8 +61,8 @@ int	check_input_nbrs(char *map, char *direction, size_t *position)
 		index++;
 	}
 	if (count == 0)
-		print_error_msg(error_msg_jump_no_count(direction));
+		print_error_msg(branch_error_msg_no_count(direction));
 	else if (count >= 2)
-		print_error_msg(error_msg_jump_counts(direction));
+		print_error_msg(branch_error_msg_counts(direction));
 	return (count);
 }
