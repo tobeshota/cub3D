@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/01/20 18:52:56 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/01/25 11:13:12 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,7 @@ bool	check_rgb_value(int *color);
 bool	check_data_position(t_mark *mark);
 bool	check_texture(t_map *map);
 bool	check_map(t_map *map);
+bool	bfs_map_check(t_map *map);
+void	retrun_bfs_map(t_map *map);
 
 #endif
