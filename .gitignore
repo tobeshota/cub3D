@@ -20,6 +20,7 @@
 *.pch
 
 # Libraries
+minilibx-linux/
 *.lib
 *.a
 *.la
