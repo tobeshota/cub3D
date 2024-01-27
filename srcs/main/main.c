@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: toshota <toshota@student.42.fr>            +#+  +:+       +#+        */
+/*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/01/20 17:44:50 by toshota          ###   ########.fr       */
+/*   Updated: 2024/01/27 18:39:12 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,12 @@ static void	print_map_variable(t_data *data)
 		printf("%s\n", data->map->map[index]);
 }
 
+int	closing_process(t_game *game)
+{
+	mlx_destroy_window(game->mlx_ptr, game->win_ptr);
+	exit(EXIT_SUCCESS);
+}
+
 int	main(int argc, char **argv)
 {
 	t_data	data;
@@ -38,10 +44,13 @@ int	main(int argc, char **argv)
 	init_map(&data, argc, argv);
 	print_map_variable(&data);
 	init_mlx(&data);
+	create_window(&data);
 	// texturesを読み込む(csakamot)
 	// init_textures(&data);
 	// gameをはじめる(toshota)
 	// start_game(&data);
+	mlx_hook(data.game->win_ptr, 17, 1L << 2, closing_process, data.game);
+	mlx_loop(data.game->mlx_ptr);
 	free_data(&data);
 	return (EXIT_SUCCESS);
 }
