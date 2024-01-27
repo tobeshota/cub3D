@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/01/24 10:45:22 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/01/27 16:52:31 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,21 @@
 # include <stdlib.h>
 # include <stdbool.h>
 
-# define WALL	'1'
-# define FLOOR	'0'
-# define NORTH	'N'
-# define SOUTH	'S'
-# define WEST	'W'
-# define EAST	'E'
-# define NO		"NO"
-# define SO		"SO"
-# define WE		"WE"
-# define EA		"EA"
-# define FL		"F"
-# define CE		"C"
+
+# define DISPLAY_W	1920
+# define DISPLAY_H	1080
+# define WALL		'1'
+# define FLOOR		'0'
+# define NORTH		'N'
+# define SOUTH		'S'
+# define WEST		'W'
+# define EAST		'E'
+# define NO			"NO"
+# define SO			"SO"
+# define WE			"WE"
+# define EA			"EA"
+# define FL			"F"
+# define CE			"C"
 
 typedef struct s_mark{
 	size_t	no;
