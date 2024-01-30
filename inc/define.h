@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/01/27 16:52:31 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/01/27 20:01:59 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,8 @@ typedef struct s_game{
 }				t_game;
 
 typedef struct s_data{
-	int		tmp;
+	int		window_width;
+	int		window_height;
 	t_map	*map;
 	t_game	*game;
 }				t_data;
