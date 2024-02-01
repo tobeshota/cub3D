@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: toshota <toshota@student.42.fr>            +#+  +:+       +#+        */
+/*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/01/20 17:55:45 by toshota          ###   ########.fr       */
+/*   Updated: 2024/02/01 14:33:09 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 
 void	init_map(t_data *data, int argc, char **argv);
 void	init_mlx(t_data *data);
+void	init_game_data(t_data *data);
 void	input_map_and_texture(t_map *map, int argc, char **argv);
 void	set_map(t_map *map, t_mark *mark, char *map_src);
 void	set_texture_path(t_map *map, t_mark *mark, char *map_src);

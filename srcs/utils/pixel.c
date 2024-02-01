@@ -1,36 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   judge.c                                            :+:      :+:    :+:   */
+/*   pixel.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/01 14:30:36 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/01/31 11:15:38 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-bool	judge_directon_chara(char chara)
+void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 {
-	if (chara == NORTH
-		|| chara == SOUTH
-		|| chara == WEST
-		|| chara == EAST)
-		return (true);
-	return (false);
-}
+	char	*dst;
 
-bool	judge_map_chara(char chara)
-{
-	if (chara != WALL
-		&& chara != FLOOR
-		&& chara != NORTH
-		&& chara != SOUTH
-		&& chara != WEST
-		&& chara != EAST
-		&& chara != ' ')
-		return (true);
-	return (false);
+	dst = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
+	*(unsigned int*)dst = color;
 }

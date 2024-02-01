@@ -1,36 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   judge.c                                            :+:      :+:    :+:   */
+/*   init_raycast.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/01 14:30:36 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/01/31 16:36:48 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
+#include "ray.h"
 
-bool	judge_directon_chara(char chara)
+void	init_raycast(t_data *data, t_game *game)
 {
-	if (chara == NORTH
-		|| chara == SOUTH
-		|| chara == WEST
-		|| chara == EAST)
-		return (true);
-	return (false);
-}
+	t_img	*img;
 
-bool	judge_map_chara(char chara)
-{
-	if (chara != WALL
-		&& chara != FLOOR
-		&& chara != NORTH
-		&& chara != SOUTH
-		&& chara != WEST
-		&& chara != EAST
-		&& chara != ' ')
-		return (true);
-	return (false);
+	img = ft_calloc(sizeof(t_img), 1);
+	if (!img)
+		return (
+			free_data(data),
+			print_error_msg(MALLOC_ERROR),
+			exit(EXIT_FAILURE));
+	game->img = img;
+	img->img = mlx_new_image(
+			game->mlx_ptr,
+			data->window_width,
+			data->window_height);
+	if (!img->img)
+		return (
+			free_data(data),
+			print_error_msg(MALLOC_ERROR),
+			exit(EXIT_FAILURE));
+	img->addr = mlx_get_data_addr(
+			img->img,
+			&img->bits_per_pixel,
+			&img->line_length,
+			&img->endian);
+	return ;
 }

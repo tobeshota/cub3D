@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/01/27 18:39:12 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/01 15:17:53 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,9 @@ int	main(int argc, char **argv)
 	print_map_variable(&data);
 	init_mlx(&data);
 	create_window(&data);
+	init_game_data(&data);
+	init_raycast(&data, data.game);
+	test_ray_block(&data, data.game);
 	// texturesを読み込む(csakamot)
 	// init_textures(&data);
 	// gameをはじめる(toshota)

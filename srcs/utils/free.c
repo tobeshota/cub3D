@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: toshota <toshota@student.42.fr>            +#+  +:+       +#+        */
+/*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/01/20 16:23:47 by toshota          ###   ########.fr       */
+/*   Updated: 2024/01/31 16:32:00 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,22 @@ void	free_map(t_map *map)
 	return ;
 }
 
+void	free_img(t_img *img)
+{
+	if (img->img)
+		free(img->img);
+	free(img);
+	return ;
+}
+
 void	free_game(t_game *game)
 {
 	if (game->mlx_ptr)
 		free(game->mlx_ptr);
 	if (game->win_ptr)
 		free(game->win_ptr);
+	if (game->img)
+		free_img(game->img);
 	free(game);
 	return ;
 }
