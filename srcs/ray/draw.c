@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray.h                                              :+:      :+:    :+:   */
+/*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/02 16:08:33 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/02 16:31:27 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RAY_H
-# define RAY_H
+#include "ray.h"
 
-# include "libft.h"
-# include "mlx.h"
-# include "define.h"
-# include "utils.h"
-# include "error.h"
+void	draw_wall(t_game *game, t_ray *ray, int x)
+{
+	int	y;
 
-void	init_raycast(t_data *data, t_game *game);
-void	ray_cast(t_game *game, t_map *map, t_ray *ray);
-void	ray_firing(t_game *game, t_ray *ray, int x);
-void	dda_exec(t_map *map, t_ray *ray);
-void	draw_wall(t_game *game, t_ray *ray, int x);
-
-#endif
+	y = 0;
+	while (y < DISPLAY_H)
+	{
+		if (ray->drawstart <= y && y <= ray->drawend)
+			my_mlx_pixel_put(game->img, x, y, 0x00FF0000);
+		else
+			my_mlx_pixel_put(game->img, x, y, 0xFF0000FF);
+		y++;
+	}
+	return ;
+}

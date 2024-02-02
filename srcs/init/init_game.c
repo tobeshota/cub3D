@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/01 15:16:44 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/02 02:19:43 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,22 @@ static void	get_player_direction(t_game *game, char chara)
 	if (chara == NORTH)
 	{
 		game->diry = -1;
-		game->camx = 0.66;
+		game->camx = CAMERA / 2;
 	}
 	else if (chara == SOUTH)
 	{
 		game->diry = 1;
-		game->camx = 0.66;
+		game->camx = CAMERA / 2;
 	}
 	else if (chara == WEST)
 	{
 		game->dirx = -1;
-		game->camy = 0.66;
+		game->camy = CAMERA / 2;
 	}
 	else if (chara == EAST)
 	{
 		game->dirx = 1;
-		game->camy = 0.66;
+		game->camy = CAMERA / 2;
 	}
 	return ;
 }

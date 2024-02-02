@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/01 15:17:53 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/02 16:14:56 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,14 @@ int	main(int argc, char **argv)
 	print_map_variable(&data);
 	init_mlx(&data);
 	create_window(&data);
+	mlx_hook(data.game->win_ptr, 17, 1L << 2, closing_process, data.game);
 	init_game_data(&data);
 	init_raycast(&data, data.game);
-	test_ray_block(&data, data.game);
+	ray_cast(data.game, data.map, data.game->ray);
 	// texturesを読み込む(csakamot)
 	// init_textures(&data);
 	// gameをはじめる(toshota)
 	// start_game(&data);
-	mlx_hook(data.game->win_ptr, 17, 1L << 2, closing_process, data.game);
 	mlx_loop(data.game->mlx_ptr);
 	free_data(&data);
 	return (EXIT_SUCCESS);
