@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/03 20:07:07 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/03 20:22:27 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ void	mlx_hook_list(t_data *data)
 		&key_hook_list,
 		data
 		);
-	mlx_key_hook(data->game->win_ptr, key_hook_list, data);
 	mlx_expose_hook(data->game->win_ptr, ray_cast, data);
 	return ;
 }
