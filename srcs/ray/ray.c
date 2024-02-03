@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/03 13:10:23 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/03 17:47:41 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,22 +27,22 @@ static void	calcu_sidedist(t_game *game, t_ray *ray)
 	if (ray->raydirx > 0)
 	{
 		ray->stepx = 1;
-		ray->sidedistx = (game->posx - ray->int_posx) * ray->deltadistx;
+		ray->sidedistx = (ray->int_posx + 1 - game->posx) * ray->deltadistx;
 	}
 	else
 	{
 		ray->stepx = -1;
-		ray->sidedistx = (ray->int_posx + 1 - game->posx) * ray->deltadistx;
+		ray->sidedistx = (game->posx - ray->int_posx) * ray->deltadistx;
 	}
 	if (ray->raydiry > 0)
 	{
 		ray->stepy = 1;
-		ray->sidedisty = (game->posy - ray->int_posy) * ray->deltadisty;
+		ray->sidedisty = (ray->int_posy + 1 - game->posy) * ray->deltadisty;
 	}
 	else
 	{
 		ray->stepy = -1;
-		ray->sidedisty = (ray->int_posy + 1 - game->posy) * ray->deltadisty;
+		ray->sidedisty = (game->posy - ray->int_posy) * ray->deltadisty;
 	}
 	return ;
 }

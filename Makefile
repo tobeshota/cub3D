@@ -3,7 +3,7 @@ MAIN_SRC		= main.c
 INIT_SRC		= init_map.c input.c input_texture.c input_map.c set_map.c set_texture_path.c init_mlx.c init_game.c
 WINDOW_SRC		= create_window.c
 RAY_SRC			= init_raycast.c ray.c dda.c draw.c
-UTILS_SRC		= str_related.c length.c judge.c free.c pixel.c
+UTILS_SRC		= str_related.c length.c judge.c free.c pixel.c number.c
 CHECK_SRC		= check_set_texture_path.c  check_set_map.c check_input_texture_path.c check_rgb_value.c check_texture.c check_map.c check_map_bfs.c
 ERROR_SRC		= error.c
 
