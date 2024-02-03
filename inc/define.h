@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/03 16:39:48 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/03 19:16:53 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,13 @@
 
 # define DISPLAY_W	1920
 # define DISPLAY_H	1080
+# define ESC		65307
+# define KEY_A		97
+# define KEY_W		119
+# define KEY_S		115
+# define KEY_D		100
+# define KEY_LEFT	65361
+# define KEY_RIGHT	65363
 # define DPI_W		1920
 # define DPI_H		1080
 # define CAMERA		1.32
@@ -36,6 +43,9 @@
 # define EA			"EA"
 # define FL			"F"
 # define CE			"C"
+# define RED		0x00FF0000
+# define GREEN		0x0000FF00
+# define BLUE		0x000000FF
 
 typedef struct s_mark{
 	size_t	no;

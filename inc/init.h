@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/01 14:33:09 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/03 18:31:43 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 # include "error.h"
 
 void	init_map(t_data *data, int argc, char **argv);
-void	init_mlx(t_data *data);
 void	init_game_data(t_data *data);
 void	input_map_and_texture(t_map *map, int argc, char **argv);
 void	set_map(t_map *map, t_mark *mark, char *map_src);

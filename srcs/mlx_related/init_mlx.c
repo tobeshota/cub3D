@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   init_mlx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/03 18:33:50 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/03 18:36:19 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include "mlx_related.h"
 
-# include <fcntl.h>
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <stdlib.h>
-# include <stdio.h>
-# include <unistd.h>
-# include "libft.h"
-# include "mlx.h"
-# include "define.h"
-# include "init.h"
-# include "mlx_related.h"
-# include "texture.h"
-# include "ray.h"
-# include "utils.h"
-# include "check.h"
-# include "error.h"
+void	init_mlx(t_data *data)
+{
+	t_game	*game;
 
-#endif
+	game = ft_calloc(sizeof(t_game), 1);
+	if (!game)
+		return (print_error_msg(MALLOC_ERROR),
+			free_data(data),
+			exit(EXIT_FAILURE));
+	game->mlx_ptr = mlx_init();
+	if (!game->mlx_ptr)
+		return (print_error_msg("mlx_init error."),
+			free_data(data),
+			exit(EXIT_FAILURE));
+	data->game = game;
+	return ;
+}

@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   window.h                                           :+:      :+:    :+:   */
+/*   destory_window.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/01/27 16:38:37 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/03 18:43:20 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WINDOW_H
-# define WINDOW_H
+#include "mlx_related.h"
 
-# include "libft.h"
-# include "mlx.h"
-# include "define.h"
-# include "utils.h"
-# include "error.h"
-
-void	create_window(t_data *data);
-
-#endif
+int	closing_process(t_game *game)
+{
+	mlx_destroy_window(game->mlx_ptr, game->win_ptr);
+	exit(EXIT_SUCCESS);
+}

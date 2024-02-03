@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_mlx.c                                         :+:      :+:    :+:   */
+/*   mlx_related.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/01/20 18:29:57 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/03 18:44:25 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "init.h"
+#ifndef MLX_RELATED_H
+# define MLX_RELATED_H
 
-void	init_mlx(t_data *data)
-{
-	t_game	*game;
+# include "libft.h"
+# include "mlx.h"
+# include "define.h"
+# include "ray.h"
+# include "utils.h"
+# include "error.h"
 
-	game = ft_calloc(sizeof(t_game), 1);
-	if (!game)
-		return (print_error_msg(MALLOC_ERROR),
-			free_data(data),
-			exit(EXIT_FAILURE));
-	game->mlx_ptr = mlx_init();
-	if (!game->mlx_ptr)
-		return (print_error_msg("mlx_init error."),
-			free_data(data),
-			exit(EXIT_FAILURE));
-	data->game = game;
-	return ;
-}
+void	init_mlx(t_data *data);
+void	mlx_hook_list(t_data *data);
+void	create_window(t_data *data);
+int		closing_process(t_game *game);
+
+#endif
