@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/01/31 16:32:39 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/03 17:36:50 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ bool	judge_directon_chara(char chara);
 bool	judge_map_chara(const char chara);
 size_t	blank_pass(char *str);
 char	*str_connect(char *str, char *addstr);
+int		round_number(double number);
 size_t	ft_array_len(char **array);
 size_t	ft_path_len(char *str);
 size_t	ft_line_len(char *str);
