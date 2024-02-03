@@ -1,36 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   judge.c                                            :+:      :+:    :+:   */
+/*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/01 14:30:36 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/02 16:31:27 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
+#include "ray.h"
 
-bool	judge_directon_chara(char chara)
+void	draw_wall(t_game *game, t_ray *ray, int x)
 {
-	if (chara == NORTH
-		|| chara == SOUTH
-		|| chara == WEST
-		|| chara == EAST)
-		return (true);
-	return (false);
-}
+	int	y;
 
-bool	judge_map_chara(char chara)
-{
-	if (chara != WALL
-		&& chara != FLOOR
-		&& chara != NORTH
-		&& chara != SOUTH
-		&& chara != WEST
-		&& chara != EAST
-		&& chara != ' ')
-		return (true);
-	return (false);
+	y = 0;
+	while (y < DISPLAY_H)
+	{
+		if (ray->drawstart <= y && y <= ray->drawend)
+			my_mlx_pixel_put(game->img, x, y, 0x00FF0000);
+		else
+			my_mlx_pixel_put(game->img, x, y, 0xFF0000FF);
+		y++;
+	}
+	return ;
 }

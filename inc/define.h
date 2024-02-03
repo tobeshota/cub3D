@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/01/27 16:52:31 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/02 15:54:53 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@
 
 # define DISPLAY_W	1920
 # define DISPLAY_H	1080
+# define DPI_W		1920
+# define DPI_H		1080
+# define CAMERA		1.32
+# define X_SIDE		0
+# define Y_SIDE		1
 # define WALL		'1'
 # define FLOOR		'0'
 # define NORTH		'N'
@@ -58,13 +63,49 @@ typedef struct s_map{
 	int		*ce_color;
 }				t_map;
 
+typedef struct s_ray{
+	int		hit;
+	int		side_dir;
+	int		int_posx;
+	int		int_posy;
+	int		stepx;
+	int		stepy;
+	double	raydirx;
+	double	raydiry;
+	double	sidedistx;
+	double	sidedisty;
+	double	deltadistx;
+	double	deltadisty;
+	double	raydist;
+	int		wall_h;
+	int		drawstart;
+	int		drawend;
+}				t_ray;
+
+typedef struct s_img{
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_img;
+
 typedef struct s_game{
 	void	*mlx_ptr;
 	void	*win_ptr;
+	double	posx;
+	double	posy;
+	double	dirx;
+	double	diry;
+	double	camx;
+	double	camy;
+	t_img	*img;
+	t_ray	*ray;
 }				t_game;
 
 typedef struct s_data{
-	int		tmp;
+	int		window_width;
+	int		window_height;
 	t_map	*map;
 	t_game	*game;
 }				t_data;

@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/01/27 16:38:17 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/01/31 11:05:42 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,10 @@
 # include "mlx.h"
 # include "define.h"
 # include "init.h"
-# include "check.h"
 # include "window.h"
+# include "ray.h"
 # include "utils.h"
+# include "check.h"
 # include "error.h"
 
 #endif
