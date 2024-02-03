@@ -1,7 +1,8 @@
 NAME			= cub3D
 MAIN_SRC		= main.c
-INIT_SRC		= init_map.c input.c input_texture.c input_map.c set_map.c set_texture_path.c init_mlx.c init_game.c
-WINDOW_SRC		= create_window.c
+INIT_SRC		= init_map.c input.c input_texture.c input_map.c set_map.c set_texture_path.c init_game.c
+MLX_RELATED_SRC	= init_mlx.c create_window.c hook.c destory_window.c
+TEXTURE_SRC		= init_texture.c
 RAY_SRC			= init_raycast.c ray.c dda.c draw.c
 UTILS_SRC		= str_related.c length.c judge.c free.c pixel.c number.c
 CHECK_SRC		= check_set_texture_path.c  check_set_map.c check_input_texture_path.c check_rgb_value.c check_texture.c check_map.c check_map_bfs.c
@@ -10,13 +11,14 @@ ERROR_SRC		= error.c
 SRCDIR			= srcs
 SRCS			= $(addprefix $(SRCDIR)/main/, $(MAIN_SRC))
 SRCS			+= $(addprefix $(SRCDIR)/init/, $(INIT_SRC))
-SRCS			+= $(addprefix $(SRCDIR)/window/, $(WINDOW_SRC))
+SRCS			+= $(addprefix $(SRCDIR)/mlx_related/, $(MLX_RELATED_SRC))
+SRCS			+= $(addprefix $(SRCDIR)/texture/, $(TEXTURE_SRC))
 SRCS			+= $(addprefix $(SRCDIR)/ray/, $(RAY_SRC))
 SRCS			+= $(addprefix $(SRCDIR)/utils/, $(UTILS_SRC))
 SRCS			+= $(addprefix $(SRCDIR)/check/, $(CHECK_SRC))
 SRCS			+= $(addprefix $(SRCDIR)/error/, $(ERROR_SRC))
 
-MAKE_DIR		= main init window ray utils check error
+MAKE_DIR		= main init mlx_related texture ray utils check error
 
 OBJDIR = objs
 OBJS = $(subst $(SRCDIR), $(OBJDIR), $(SRCS:.c=.o))

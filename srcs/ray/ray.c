@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/03 17:47:41 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/03 19:01:00 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,21 +79,25 @@ static void	calcu_wall_height(t_ray *ray)
 	return ;
 }
 
-void	ray_cast(t_game *game, t_map *map, t_ray *ray)
+int	ray_cast(t_data *data)
 {
-	int	dot;
+	int		dot;
+	t_map	*map;
+	t_game	*game;
 
+	map = data->map;
+	game = data->game;
 	dot = 0;
 	while (dot < DISPLAY_W)
 	{
-		ray_firing(game, ray, dot);
-		calcu_dda_variable(game, ray);
-		ray->hit = 0;
-		dda_exec(map, ray);
-		calcu_wall_height(ray);
-		draw_wall(game, ray, dot);
+		ray_firing(game, game->ray, dot);
+		calcu_dda_variable(game, game->ray);
+		game->ray->hit = 0;
+		dda_exec(map, game->ray);
+		calcu_wall_height(game->ray);
+		draw_wall(game, game->ray, dot);
 		dot++;
 	}
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img->img, 0, 0);
-	return ;
+	return (true);
 }
