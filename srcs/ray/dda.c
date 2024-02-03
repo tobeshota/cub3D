@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/02 16:43:02 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/03 13:11:56 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	dda_exec(t_map *map, t_ray *ray)
 			ray->hit = 1;
 	}
 	if (ray->side_dir == X_SIDE)
-		ray->raydist = ray->sidedistx;
+		ray->raydist = ray->sidedistx - ray->deltadistx;
 	else
-		ray->raydist = ray->sidedisty;
+		ray->raydist = ray->sidedisty - ray->deltadisty;
 }

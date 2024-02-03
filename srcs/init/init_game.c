@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/02 02:19:43 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/03 12:58:00 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,11 @@ static void	serch_player(t_game *game, t_map *map)
 		col = 0;
 		while (map->map[row][col])
 		{
-			if (judge_directon_chara(map->map[col][row]))
+			if (judge_directon_chara(map->map[row][col]))
 			{
-				game->posy = row;
-				game->posx = col;
-				get_player_direction(game, map->map[col][row]);
+				game->posy = (double)row;
+				game->posx = (double)col;
+				get_player_direction(game, map->map[row][col]);
 			}
 			col++;
 		}

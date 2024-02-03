@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/02 16:42:32 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/03 13:10:23 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,13 @@ static void	calcu_dda_variable(t_game *game, t_ray *ray)
 	if (ray->raydirx == 0)
 		ray->deltadistx = __DBL_MAX__;
 	else
-		ray->deltadistx = (int)(1 / ray->raydirx);
+		ray->deltadistx = (1 / ray->raydirx);
 	if (ray->deltadistx < 0)
 		ray->deltadistx *= -1;
 	if (ray->raydiry == 0)
 		ray->deltadisty = __DBL_MAX__;
 	else
-		ray->deltadisty = (int)(1 / ray->raydiry);
+		ray->deltadisty = (1 / ray->raydiry);
 	if (ray->deltadisty < 0)
 		ray->deltadisty *= -1;
 	calcu_sidedist(game, ray);
