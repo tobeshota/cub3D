@@ -6,13 +6,14 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/03 17:36:50 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/05 16:01:43 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef UTILS_H
 # define UTILS_H
 
+# include <math.h>
 # include <unistd.h>
 # include <stdbool.h>
 # include <stdio.h>
@@ -25,6 +26,8 @@ bool	judge_map_chara(const char chara);
 size_t	blank_pass(char *str);
 char	*str_connect(char *str, char *addstr);
 int		round_number(double number);
+double	my_abs(double number);
+double	get_radian(int angle);
 size_t	ft_array_len(char **array);
 size_t	ft_path_len(char *str);
 size_t	ft_line_len(char *str);
