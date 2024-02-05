@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/05 16:15:31 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/05 19:40:51 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int	ray_cast(t_data *data)
 		game->ray->hit = 0;
 		dda_exec(map, game->ray);
 		calcu_wall_height(game->ray);
-		draw_wall(game, game->ray, dot);
+		draw_wall(map, game, game->ray, dot);
 		dot++;
 	}
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img->img, 0, 0);
