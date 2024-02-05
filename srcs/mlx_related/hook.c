@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/05 16:14:28 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/05 20:55:23 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,30 @@
 static void	move_ray_cast(t_data *data, double frontback, double leftright)
 {
 	t_game	*game;
+	double	angle;
+	double	multiplication;
 
 	game = data->game;
+	angle = 0;
+	multiplication = 0;
 	if (frontback)
 	{
-		game->posx += frontback * cos(get_radian(game->ray->angle));
-		game->posy += frontback * -sin(get_radian(game->ray->angle));
+		multiplication = frontback;
+		angle = get_radian(game->ray->angle);
 	}
 	if (leftright)
 	{
-		game->posx += leftright * cos(get_radian(game->ray->angle - 90));
-		game->posy += leftright * -sin(get_radian(game->ray->angle - 90));
+		multiplication = leftright;
+		angle = get_radian(game->ray->angle - 90);
+	}
+	game->posx += multiplication * cos(angle);
+	game->posy += multiplication * -sin(angle);
+	if (data->map->map[(int)game->posy][(int)game->posx] == '1')
+	{
+		game->posx -= multiplication * cos(angle);
+		game->posy -= multiplication * -sin(angle);
 	}
 	ray_cast(data);
-	return ;
 }
 
 static int	key_hook_list(int keycode, t_data *data)
