@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/03 20:19:57 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/05 16:05:12 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,16 @@
 # define KEY_D			100
 # define KEY_LEFT		65361
 # define KEY_RIGHT		65363
+# define LEFT			0
+# define RIGHT			1
 # define KEY_PRESS		2
 # define DESTROY_NOTIFY	17
 # define DPI_W			1920
 # define DPI_H			1080
 # define CAMERA			1.32
 # define MOVE			0.05
+# define ROTATE			2
+# define VECTOR			1
 # define X_SIDE			0
 # define Y_SIDE			1
 # define WALL			'1'
@@ -44,6 +48,10 @@
 # define SO				"SO"
 # define WE				"WE"
 # define EA				"EA"
+# define N				90
+# define S				270
+# define W				180
+# define E				0
 # define FL				"F"
 # define CE				"C"
 # define RED			0x00FF0000
@@ -78,6 +86,7 @@ typedef struct s_map{
 
 typedef struct s_ray{
 	int		hit;
+	int		angle;
 	int		side_dir;
 	int		int_posx;
 	int		int_posy;

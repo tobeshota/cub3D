@@ -6,11 +6,24 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/02 15:25:03 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/05 14:22:12 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ray.h"
+
+static void	get_player_angle(t_game *game)
+{
+	if (game->dirx == 0 && game->diry == -1)
+		game->ray->angle = N;
+	else if (game->dirx == 0 && game->diry == 1)
+		game->ray->angle = S;
+	else if (game->dirx == -1 && game->diry == 0)
+		game->ray->angle = W;
+	else if (game->dirx == 1 && game->diry == 9)
+		game->ray->angle = E;
+	return ;
+}
 
 void	init_raycast(t_data *data, t_game *game)
 {
@@ -34,5 +47,6 @@ void	init_raycast(t_data *data, t_game *game)
 			exit(EXIT_FAILURE));
 	img->addr = mlx_get_data_addr(img->img, &img->bits_per_pixel,
 			&img->line_length, &img->endian);
+	get_player_angle(game);
 	return ;
 }

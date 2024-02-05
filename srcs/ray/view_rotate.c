@@ -1,41 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   number.c                                           :+:      :+:    :+:   */
+/*   view_rotate.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/05 16:06:44 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/05 16:10:41 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
+#include "ray.h"
 
-int	round_number(double number)
+void	view_point_rotate(t_data *data, bool left, bool right)
 {
-	int		result;
-	double	surplus;
+	int	*angle;
 
-	result = 0;
-	surplus = result % 1;
-	if (surplus < 0.5)
-		return ((int)(number / 1));
-	else
-		return ((int)(number / 1 + 1));
-}
-
-double	my_abs(double number)
-{
-	if (number < 0)
-		return (-1 * number);
-	return (number);
-}
-
-double	get_radian(int angle)
-{
-	double	radian;
-
-	radian = ((double)angle / 360) * (2 * M_PI);
-	return (radian);
+	angle = &data->game->ray->angle;
+	if (right)
+		*angle -= ROTATE;
+	if (left)
+		*angle += ROTATE;
+	if (*angle == 360)
+		*angle = 0;
+	if (*angle == -2)
+		*angle = 358;
+	data->game->dirx = VECTOR * cos(get_radian(*angle));
+	data->game->diry = -1 * (VECTOR * sin(get_radian(*angle)));
+	data->game->camx = CAMERA / 2 * sin(get_radian(*angle));
+	data->game->camy = CAMERA / 2 * -1 * cos(get_radian(*angle));
+	ray_cast(data);
+	return ;
 }
