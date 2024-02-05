@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/05 16:05:12 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/05 20:19:21 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 
 # define DISPLAY_W		1920
 # define DISPLAY_H		1080
+# define RGBA			4
+# define EIGHT			255
 # define ESC			65307
 # define KEY_A			97
 # define KEY_W			119
@@ -54,9 +56,6 @@
 # define E				0
 # define FL				"F"
 # define CE				"C"
-# define RED			0x00FF0000
-# define GREEN			0x0000FF00
-# define BLUE			0x000000FF
 
 typedef struct s_mark{
 	size_t	no;
@@ -80,8 +79,8 @@ typedef struct s_map{
 	char	*so_texture;
 	char	*we_texture;
 	char	*ea_texture;
-	int		*fl_color;
 	int		*ce_color;
+	int		*fl_color;
 }				t_map;
 
 typedef struct s_ray{

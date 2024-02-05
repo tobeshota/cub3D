@@ -1,41 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw.c                                             :+:      :+:    :+:   */
+/*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/05 20:22:01 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/05 20:21:34 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ray.h"
+#include "utils.h"
 
-void	draw_wall(t_map *map, t_game *game, t_ray *ray, int x)
+unsigned int	get_color_number(int alpha, int red, int green, int blue)
 {
-	int				y;
-	int				*ceil;
-	int				*floor;
+	size_t			index;
+	unsigned int	multiplication;
 	unsigned int	color;
 
-	y = 0;
-	ceil = map->ce_color;
-	floor = map->fl_color;
-	while (y < DISPLAY_H)
+	index = 0;
+	multiplication = 1;
+	color = 0;
+	while (index < RGBA)
 	{
-		if (y < ray->drawstart)
-			color = get_color_number(false, ceil[0], ceil[1], ceil[2]);
-		else if (y > ray->drawend)
-			color = get_color_number(false, floor[0], floor[1], floor[2]);
-		else
-		{
-			color = 0x00FF0000;
-			if (ray->side_dir == X_SIDE)
-				color = 0x00330000;
-		}
-		my_mlx_pixel_put(game->img, x, y, color);
-		y++;
+		if (index)
+			multiplication *= EIGHT;
+		if (index == 0)
+			color += blue * multiplication;
+		if (index == 1)
+			color += green * multiplication;
+		if (index == 2)
+			color += red * multiplication;
+		if (index == 3)
+			color += alpha * multiplication;
+		index++;
 	}
-	return ;
+	return (color);
 }
