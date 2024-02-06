@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/05 19:53:52 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/05 22:32:01 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void			free_data(t_data *data);
 void			free_game(t_game *game);
 void			free_map(t_map *map);
 void			free_img(t_img *img);
+void			free_texture(t_texture *texture);
 void			free_str_array(char **array);
 
 #endif

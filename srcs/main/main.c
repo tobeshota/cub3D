@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/03 19:02:09 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/05 23:01:02 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	main(int argc, char **argv)
 	print_map_variable(&data);
 	init_mlx(&data);
 	create_window(&data);
+	init_texture(&data);
 	init_game_data(&data);
 	mlx_hook_list(&data);
 	init_raycast(&data, data.game);

@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   texture.h                                          :+:      :+:    :+:   */
+/*   free_second.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/05 22:39:35 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/06 12:59:23 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TEXTURE_H
-# define TEXTURE_H
+#include "utils.h"
 
-# include "libft.h"
-# include "mlx.h"
-# include "define.h"
-# include "utils.h"
-# include "check.h"
-# include "error.h"
-
-void	init_texture(t_data *data);
-
-#endif
+void	free_texture(t_texture *texture)
+{
+	if (texture->north)
+		free_img(texture->north);
+	if (texture->south)
+		free_img(texture->south);
+	if (texture->west)
+		free_img(texture->west);
+	if (texture->east)
+		free_img(texture->east);
+	return ;
+}

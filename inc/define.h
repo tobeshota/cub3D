@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/05 20:19:21 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/06 12:36:44 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 
 # define DISPLAY_W		1920
 # define DISPLAY_H		1080
+# define TEX_W			64
+# define TEX_H			64
 # define RGBA			4
 # define EIGHT			255
 # define ESC			65307
@@ -83,6 +85,23 @@ typedef struct s_map{
 	int		*fl_color;
 }				t_map;
 
+typedef struct s_img{
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_img;
+
+typedef struct s_texture{
+	int		tex_w;
+	int		tex_h;
+	t_img	*north;
+	t_img	*south;
+	t_img	*west;
+	t_img	*east;
+}				t_texture;
+
 typedef struct s_ray{
 	int		hit;
 	int		angle;
@@ -103,25 +122,18 @@ typedef struct s_ray{
 	int		drawend;
 }				t_ray;
 
-typedef struct s_img{
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}				t_img;
-
 typedef struct s_game{
-	void	*mlx_ptr;
-	void	*win_ptr;
-	double	posx;
-	double	posy;
-	double	dirx;
-	double	diry;
-	double	camx;
-	double	camy;
-	t_img	*img;
-	t_ray	*ray;
+	void		*mlx_ptr;
+	void		*win_ptr;
+	double		posx;
+	double		posy;
+	double		dirx;
+	double		diry;
+	double		camx;
+	double		camy;
+	t_img		*img;
+	t_texture	*texture;
+	t_ray		*ray;
 }				t_game;
 
 typedef struct s_data{
