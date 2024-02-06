@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/06 13:56:59 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/06 15:53:31 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static bool	get_img_data(t_game *game, char *path, char dir)
 {
 	t_img	*direction;
 
+	direction = ft_calloc(sizeof(t_img), 1);
 	if (!direction)
 		return (false);
 	direction->img = mlx_xpm_file_to_image(game->mlx_ptr, path,

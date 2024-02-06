@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/06 00:46:34 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/06 21:34:12 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ int	ray_cast(t_data *data)
 		draw_wall(map, game, game->ray, dot);
 		dot++;
 	}
+	draw_texture(data->game, data->game->texture);
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img->img, 0, 0);
 	return (true);
 }

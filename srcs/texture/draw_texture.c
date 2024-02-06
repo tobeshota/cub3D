@@ -1,41 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw.c                                             :+:      :+:    :+:   */
+/*   draw_texture.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/06 15:12:23 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/06 21:33:45 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ray.h"
+#include "texture.h"
 
-void	draw_wall(t_map *map, t_game *game, t_ray *ray, int x)
+void	draw_texture(t_game *game, t_texture *texture)
 {
-	int				y;
-	int				*ceil;
-	int				*floor;
-	unsigned int	color;
+	char	*tmp;
 
-	y = 0;
-	ceil = map->ce_color;
-	floor = map->fl_color;
-	while (y < DISPLAY_H)
-	{
-		if (y < ray->drawstart)
-			color = get_color_number(false, ceil[0], ceil[1], ceil[2]);
-		else if (y > ray->drawend)
-			color = get_color_number(false, floor[0], floor[1], floor[2]);
-		else
+	printf("bits_per_pixel:%d, line_length:%d, endian:%d\n", texture->north->bits_per_pixel, texture->north->line_length, texture->north->endian);
+	for (int i = 0; i < 64; i++)
+		for (int u = 0; u < 64; u++)
 		{
-			color = 0x00FF0000;
-			if (ray->side_dir == X_SIDE)
-				color = 0x00330000;
+			tmp = texture->north->addr + (i * texture->north->line_length + u * (texture->north->bits_per_pixel / 8));
+			my_mlx_pixel_put(game->img, u, i, *(int *)tmp);
 		}
-		my_mlx_pixel_put(game->img, x, y, color);
-		y++;
-	}
 	return ;
 }
