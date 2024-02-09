@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/06 15:20:19 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/07 13:34:11 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,7 @@ typedef struct s_ray{
 	double	deltadistx;
 	double	deltadisty;
 	double	raydist;
+	int		wall_w;
 	int		wall_h;
 	int		drawstart;
 	int		drawend;
