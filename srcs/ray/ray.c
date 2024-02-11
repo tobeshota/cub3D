@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/09 12:39:25 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/11 17:27:49 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,13 +70,15 @@ static void	calcu_dda_variable(t_game *game, t_ray *ray)
 static void	calcu_wall_height(t_ray *ray)
 {
 	ray->wall_h = (int)(DISPLAY_H / ray->raydist);
-	ray->wall_w = (int)(DISPLAY_W / ray->raydist);
 	ray->drawstart = - (ray->wall_h / 2) + (DISPLAY_H / 2);
 	if (ray->drawstart < 0)
 		ray->drawstart = 0;
 	ray->drawend = (ray->wall_h / 2) + (DISPLAY_H / 2);
 	if (ray->drawend >= DISPLAY_H)
 		ray->drawend = DISPLAY_H;
+	ray->surplus = ray->wall_h / 2 - DISPLAY_H / 2;
+	if (ray->surplus < 0)
+		ray->surplus = 0;
 	return ;
 }
 
