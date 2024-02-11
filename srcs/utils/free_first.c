@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   free_first.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/02 02:16:15 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/05 22:38:27 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ void	free_game(t_game *game)
 		free(game->win_ptr);
 	if (game->ray)
 		free(game->ray);
+	if (game->texture)
+		free(game->texture);
 	if (game->img)
 		free_img(game->img);
 	free(game);

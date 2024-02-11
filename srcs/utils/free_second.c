@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pixel.c                                            :+:      :+:    :+:   */
+/*   free_second.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/07 13:50:03 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/06 12:59:23 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
+void	free_texture(t_texture *texture)
 {
-	char	*dst;
-
-	dst = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
-	*(unsigned int *)dst = color;
-}
-
-unsigned int	*texture_bit_shift(t_img *img, size_t x, size_t y)
-{
-	char	*result;
-
-	result = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
-	return ((unsigned int *)result);
+	if (texture->north)
+		free_img(texture->north);
+	if (texture->south)
+		free_img(texture->south);
+	if (texture->west)
+		free_img(texture->west);
+	if (texture->east)
+		free_img(texture->east);
+	return ;
 }

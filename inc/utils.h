@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/05 19:53:52 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/07 13:48:58 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 
 void			my_mlx_pixel_put(t_img *img, int x, int y, int color);
 unsigned int	get_color_number(int alpha, int red, int green, int blue);
+unsigned int	*texture_bit_shift(t_img *img, size_t x, size_t y);
 bool			judge_directon_chara(char chara);
 bool			judge_map_chara(const char chara);
 size_t			blank_pass(char *str);
@@ -37,6 +38,7 @@ void			free_data(t_data *data);
 void			free_game(t_game *game);
 void			free_map(t_map *map);
 void			free_img(t_img *img);
+void			free_texture(t_texture *texture);
 void			free_str_array(char **array);
 
 #endif

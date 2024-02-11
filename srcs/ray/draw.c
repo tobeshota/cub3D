@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/05 20:22:01 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/11 17:26:05 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,7 @@ void	draw_wall(t_map *map, t_game *game, t_ray *ray, int x)
 		else if (y > ray->drawend)
 			color = get_color_number(false, floor[0], floor[1], floor[2]);
 		else
-		{
-			color = 0x00FF0000;
-			if (ray->side_dir == X_SIDE)
-				color = 0x00330000;
-		}
+			color = get_texture_color(game, game->ray, y);
 		my_mlx_pixel_put(game->img, x, y, color);
 		y++;
 	}
