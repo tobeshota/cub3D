@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_texture_color.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: toshota <toshota@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/11 17:27:12 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/16 00:30:41 by toshota          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,11 @@ unsigned int	get_texture_color(t_game *game, t_ray *ray, int y)
 
 	dir = get_texture_dir(game->texture, ray);
 	if (ray->side_dir == X_SIDE)
+		// 描写したい行 = 現在地 × 光線の長さ × 長さ1あたりの割合
 		col = game->posy + ray->raydist * ray->raydiry;
 	else
 		col = game->posx + ray->raydist * ray->raydirx;
+	// (col - (int)col) ぶつかった壁のx座標を求めている．これを × TEX_W することでピクセルを取得する
 	col = (col - (int)col) * TEX_W;
 	row = ((y - ray->drawstart + ray->surplus) * TEX_H / ray->wall_h);
 	color = texture_bit_shift(dir, (int)col, row);

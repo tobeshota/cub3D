@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: toshota <toshota@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/05 23:01:02 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/16 00:25:34 by toshota          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,3 +47,12 @@ int	main(int argc, char **argv)
 	free_data(&data);
 	return (EXIT_SUCCESS);
 }
+
+#ifdef DEBUG
+
+__attribute__((destructor)) void end(void)
+{
+	system("leaks -q cub3D > /dev/stderr");
+}
+
+#endif

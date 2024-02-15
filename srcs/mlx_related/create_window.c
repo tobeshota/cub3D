@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_window.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: toshota <toshota@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/03 18:36:07 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/16 00:21:48 by toshota          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,8 @@
 
 void	create_window(t_data *data)
 {
-	mlx_get_screen_size(
-		data->game->mlx_ptr,
-		&data->window_width,
-		&data->window_height
-		);
+	data->window_width = DISPLAY_W;
+	data->window_height = DISPLAY_H;
 	data->game->win_ptr = mlx_new_window(
 			data->game->mlx_ptr,
 			data->window_width, data->window_height,

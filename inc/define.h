@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   define.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: toshota <toshota@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/11 17:26:49 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/16 00:29:33 by toshota          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,17 +110,17 @@ typedef struct s_ray{
 	int		int_posy;
 	int		stepx;
 	int		stepy;
-	double	raydirx;
+	double	raydirx;	// 光線のx軸の方向
 	double	raydiry;
-	double	sidedistx;
-	double	sidedisty;
+	double	sidedistx;	// プレイヤーの位置から次のx軸までの光線の長さ
+	double	sidedisty;	// プレイヤーの位置から次のy軸までの光線の長さ
 	double	deltadistx;
 	double	deltadisty;
 	double	raydist;
 	int		wall_h;
-	int		surplus;
-	int		drawstart;
-	int		drawend;
+	int		surplus;	// ウィンドウからはみ出る壁
+	int		drawstart;	// 壁の描き始め（壁の一番高いところ）
+	int		drawend;	// 壁の描き終わり（壁の一番低いところ）
 }				t_ray;
 
 typedef struct s_game{
