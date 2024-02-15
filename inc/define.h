@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   define.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: toshota <toshota@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/11 17:26:49 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/15 12:54:09 by toshota          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,21 +85,21 @@ typedef struct s_map{
 	int		*fl_color;
 }				t_map;
 
-typedef struct s_img{
+typedef struct s_image{
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
-}				t_img;
+}				t_image;
 
 typedef struct s_texture{
 	int		tex_w;
 	int		tex_h;
-	t_img	*north;
-	t_img	*south;
-	t_img	*west;
-	t_img	*east;
+	t_image	*north;
+	t_image	*south;
+	t_image	*west;
+	t_image	*east;
 }				t_texture;
 
 typedef struct s_ray{
@@ -132,7 +132,7 @@ typedef struct s_game{
 	double		diry;
 	double		camx;
 	double		camy;
-	t_img		*img;
+	t_image		*img;
 	t_texture	*texture;
 	t_ray		*ray;
 }				t_game;

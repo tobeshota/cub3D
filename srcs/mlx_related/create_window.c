@@ -3,18 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   create_window.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: toshota <toshota@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/03 18:36:07 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/15 14:27:01 by toshota          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx_related.h"
+#include "../../minilibx-linux/mlx.h"
+#include "../../minilibx-linux/mlx_int.h"
+
+static void		my_mlx_get_screen_size(void *mlx_ptr, int *sizex, int *sizey)
+{
+	XWindowAttributes	xwAttr;
+	t_xvar				*xvar;
+
+	xvar = mlx_ptr;
+	XGetWindowAttributes(xvar->display, xvar->root, &xwAttr);
+	(*sizex) = xwAttr.width;
+	(*sizey) = xwAttr.height;
+}
+
 
 void	create_window(t_data *data)
 {
-	mlx_get_screen_size(
+	my_mlx_get_screen_size(
 		data->game->mlx_ptr,
 		&data->window_width,
 		&data->window_height

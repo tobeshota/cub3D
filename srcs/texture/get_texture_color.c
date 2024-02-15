@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   get_texture_color.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: toshota <toshota@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/11 17:27:12 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/15 12:54:02 by toshota          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "texture.h"
 
-static t_img	*get_texture_dir(t_texture *texture, t_ray *ray)
+static t_image	*get_texture_dir(t_texture *texture, t_ray *ray)
 {
-	t_img	*direction;
+	t_image	*direction;
 
 	direction = NULL;
 	if (ray->side_dir == Y_SIDE && ray->raydiry < 0)
@@ -32,7 +32,7 @@ unsigned int	get_texture_color(t_game *game, t_ray *ray, int y)
 {
 	double			row;
 	double			col;
-	t_img			*dir;
+	t_image			*dir;
 	unsigned int	*color;
 
 	dir = get_texture_dir(game->texture, ray);

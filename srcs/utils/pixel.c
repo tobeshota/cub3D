@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   pixel.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: toshota <toshota@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/07 13:50:03 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/15 14:26:46 by toshota          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
+void	my_mlx_pixel_put(t_image *img, int x, int y, int color)
 {
 	char	*dst;
 
@@ -20,7 +20,7 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-unsigned int	*texture_bit_shift(t_img *img, size_t x, size_t y)
+unsigned int	*texture_bit_shift(t_image *img, size_t x, size_t y)
 {
 	char	*result;
 

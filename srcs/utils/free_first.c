@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_first.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: toshota <toshota@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/05 22:38:27 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/15 12:54:02 by toshota          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	free_map(t_map *map)
 	return ;
 }
 
-void	free_img(t_img *img)
+void	free_img(t_image *img)
 {
 	if (img->img)
 		free(img->img);

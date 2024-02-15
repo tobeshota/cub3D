@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   init_texture.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: toshota <toshota@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/06 15:53:31 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/15 12:54:02 by toshota          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "texture.h"
 
-static bool	get_img_data(t_game *game, char *path, char dir)
+static bool	get_image_data(t_game *game, char *path, char dir)
 {
-	t_img	*direction;
+	t_image	*direction;
 
-	direction = ft_calloc(sizeof(t_img), 1);
+	direction = ft_calloc(sizeof(t_image), 1);
 	if (!direction)
 		return (false);
 	direction->img = mlx_xpm_file_to_image(game->mlx_ptr, path,
@@ -37,13 +37,13 @@ static bool	get_img_data(t_game *game, char *path, char dir)
 
 static bool	input_texture(t_map *map, t_game *game)
 {
-	if (!get_img_data(game, map->no_texture, NORTH))
+	if (!get_image_data(game, map->no_texture, NORTH))
 		return (false);
-	if (!get_img_data(game, map->so_texture, SOUTH))
+	if (!get_image_data(game, map->so_texture, SOUTH))
 		return (false);
-	if (!get_img_data(game, map->we_texture, WEST))
+	if (!get_image_data(game, map->we_texture, WEST))
 		return (false);
-	if (!get_img_data(game, map->ea_texture, EAST))
+	if (!get_image_data(game, map->ea_texture, EAST))
 		return (false);
 	return (true);
 }

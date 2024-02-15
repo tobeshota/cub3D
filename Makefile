@@ -32,12 +32,12 @@ ifeq ($(MAKECMDGOALS), address)
 	CFLAGS += -g3 -fsanitize=address
 endif
 
-ifeq        ($(shell uname), Linux)
-            INC = -I inc/ -I libft/inc -Iminilibx-linux -I/usr/include
-            LIBFT = libft/libft.a -Lminilibx-linux -lmlx_Linux -L/usr/lib -lX11 -lXext -lm
+ifeq		($(shell uname), Linux)
+			INC = -I inc/ -I/usr/include -I libft/inc -I minilibx-linux/
+			LIBFT = libft/libft.a -Lminilibx-linux -lmlx_Linux -L/usr/lib -lX11 -lXext -lm
 else
-            INC = -I inc/ -I/usr/include -I libft/inc -Iminilibx-linux -Imlx
-            LIBFT = libft/libft.a -lmlx -framework OpenGL -framework AppKit
+			INC = -I inc/ -I/usr/include -I libft/inc -I minilibx-linux
+			LIBFT = libft/libft.a -lX11 -lXext -lm -lmlx -framework OpenGL -framework AppKit
 endif
 
 ifeq		(,$(wildcard minilibx-linux))

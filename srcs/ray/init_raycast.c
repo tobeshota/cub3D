@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_raycast.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: toshota <toshota@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/05 14:22:12 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/15 12:54:02 by toshota          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ static void	get_player_angle(t_game *game)
 
 void	init_raycast(t_data *data, t_game *game)
 {
-	t_img	*img;
+	t_image	*img;
 	t_ray	*ray;
 
-	img = ft_calloc(sizeof(t_img), 1);
+	img = ft_calloc(sizeof(t_image), 1);
 	if (!img)
 		return (free_data(data), print_error_msg(MALLOC_ERROR),
 			exit(EXIT_FAILURE));
