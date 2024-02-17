@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   define.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: toshota <toshota@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/17 18:32:55 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/17 20:09:14 by toshota          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 # include <stdbool.h>
 # include <stdlib.h>
 
-# define DISPLAY_W 1920
-# define DISPLAY_H 1080
+# define DISPLAY_W 720
+# define DISPLAY_H 480
 # define TEX_W 64
 # define TEX_H 64
 # define RGBA 4
@@ -35,8 +35,8 @@
 # define RIGHT 1
 # define KEY_PRESS 2
 # define DESTROY_NOTIFY 17
-# define DPI_W 1920
-# define DPI_H 1080
+# define DPI_W DISPLAY_W
+# define DPI_H DISPLAY_H
 # define CAMERA 1.32
 # define MOVE 0.05
 # define ROTATE 2

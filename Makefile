@@ -31,7 +31,7 @@ CFLAGS = -Wall -Wextra -Werror -MP -MMD -O3
 RM = rm -rf
 
 ifeq ($(MAKECMDGOALS), debug)
-	CFLAGS += -DDEBUG
+	CFLAGS += -D DEBUG
 endif
 
 ifeq ($(MAKECMDGOALS), address)
@@ -41,6 +41,7 @@ endif
 ifeq		($(shell uname), Linux)
 			INC = -I inc/ -I libft/inc -Iminilibx-linux -I/usr/include -D LINUX
 			LIBFT = libft/libft.a -Lminilibx-linux -lmlx_Linux -L/usr/lib -lX11 -lXext -lm
+			CFLAGS += -D LINUX
 else
 			INC = -I inc/ -I libft/inc -Iminilibx-linux -I/usr/X11/include -D LINUX
 			LIBFT = libft/libft.a -Lminilibx-linux -lmlx -L/usr/X11/lib -lX11 -lXext -lm

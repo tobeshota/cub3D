@@ -3,24 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   view_rotate.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: toshota <toshota@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/05 19:30:30 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/17 19:17:43 by toshota          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ray.h"
 
-void	view_point_rotate(t_data *data, bool left, bool right)
+void	view_point_rotate(t_data *data, int dir_to_move)
 {
 	int	*angle;
 
 	angle = &data->game->ray->angle;
-	if (right)
+	if (dir_to_move == RIGHT)
 		*angle -= ROTATE;
-	if (left)
+	else if (dir_to_move == LEFT)
 		*angle += ROTATE;
+	else
+		return ;
 	if (*angle == 360)
 		*angle = 0;
 	if (*angle == -2)

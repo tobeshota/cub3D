@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: toshota <toshota@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/17 18:16:51 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/17 19:18:56 by toshota          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ int		ray_cast(t_data *data);
 void	ray_firing(t_game *game, t_ray *ray, int x);
 void	dda_exec(t_map *map, t_ray *ray);
 void	draw_wall(t_map *map, t_game *game, t_ray *ray, int x);
-void	view_point_rotate(t_data *data, bool left, bool right);
+void	view_point_rotate(t_data *data, int dir_to_move);
 
 #endif
