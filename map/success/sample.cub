@@ -1,7 +1,7 @@
-NO ./texture/wall/north.xpm
-SO ./texture/wall/south.xpm
-WE ./texture/wall/west.xpm
-EA ./texture/wall/east.xpm
+NO ./texture/jungle/north.xpm
+SO ./texture/jungle/south.xpm
+WE ./texture/jungle/west.xpm
+EA ./texture/jungle/east.xpm
 
 F 0,255,0
 C 0,0,255
