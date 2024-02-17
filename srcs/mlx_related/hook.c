@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: toshota <toshota@student.42.fr>            +#+  +:+       +#+        */
+/*   By: toshota <toshota@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/17 19:18:44 by toshota          ###   ########.fr       */
+/*   Updated: 2024/02/17 20:04:00 by toshota          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,6 @@ static int	key_hook_list(int keycode, t_data *data)
 
 static int	mouse_hook_list(int x, int y, t_data *data)
 {
-	t_ray	*ray;
-
-	ray = data->game->ray;
 	mlx_mouse_get_pos(data->game->mlx_ptr, data->game->win_ptr, &x, &y);
 	while (x < data->window_width / 3)
 	{
