@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/17 17:31:58 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/17 18:16:51 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define MLX_RELATED_H
 
 # include "libft.h"
-# include "mlx.h"
+# include "../minilibx-linux/mlx.h"
 # include "define.h"
 # include "ray.h"
 # include "utils.h"

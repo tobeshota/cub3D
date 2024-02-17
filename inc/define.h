@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   define.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: toshota <toshota@student.42.fr>            +#+  +:+       +#+        */
+/*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/17 16:05:39 by toshota          ###   ########.fr       */
+/*   Updated: 2024/02/17 18:32:55 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,23 +23,13 @@
 # define RGBA 4
 # define EIGHT 255
 
-# ifdef LINUX
-#  define ESC 65307
-#  define KEY_W 119
-#  define KEY_A 97
-#  define KEY_S 115
-#  define KEY_D 100
-#  define KEY_LEFT 65361
-#  define KEY_RIGHT 65363
-# else
-#  define ESC 53
-#  define KEY_W 13
-#  define KEY_A 0
-#  define KEY_S 1
-#  define KEY_D 2
-#  define KEY_LEFT 123
-#  define KEY_RIGHT 124
-# endif
+# define ESC 65307
+# define KEY_W 119
+# define KEY_A 97
+# define KEY_S 115
+# define KEY_D 100
+# define KEY_LEFT 65361
+# define KEY_RIGHT 65363
 
 # define LEFT 0
 # define RIGHT 1
@@ -125,6 +115,8 @@ typedef struct s_ray
 	int			side_dir;
 	int			int_posx;
 	int			int_posy;
+	int			mouse_x;
+	int			mouse_y;
 	int			stepx;
 	int			stepy;
 	double raydirx; // 光線のx軸の方向

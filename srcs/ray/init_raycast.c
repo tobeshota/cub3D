@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/05 14:22:12 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/17 19:12:56 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ void	init_raycast(t_data *data, t_game *game)
 	if (!ray)
 		return (free_data(data), print_error_msg(MALLOC_ERROR),
 			exit(EXIT_FAILURE));
+	mlx_mouse_get_pos(game->mlx_ptr, game->win_ptr,
+		&ray->mouse_x, &ray->mouse_y);
 	game->ray = ray;
 	img->img = mlx_new_image(game->mlx_ptr, data->window_width,
 			data->window_height);
