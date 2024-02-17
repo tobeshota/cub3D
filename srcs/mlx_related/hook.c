@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/17 17:05:29 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/17 18:06:50 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,10 @@ static int	key_hook_list(int keycode, t_data *data)
 
 static int	mouse_hook_list(int x, int y, t_data *data)
 {
-	mlx_mouse_move(data->game->mlx_ptr, data->game->win_ptr, x, y);
-	printf("%d, %d\n", x, y);
+	(void)x;
+	(void)y;
+	(void)data;
+	// mlx_mouse_move(data->game->mlx_ptr, data->game->win_ptr, x, y);
 	return (true);
 }
 
