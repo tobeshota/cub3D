@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: toshota <toshota@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/17 19:14:39 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/17 19:18:44 by toshota          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ static int	key_hook_list(int keycode, t_data *data)
 	if (keycode == KEY_D)
 		move_ray_cast(data, false, MOVE);
 	if (keycode == KEY_LEFT)
-		view_point_rotate(data, true, false);
+		view_point_rotate(data, LEFT);
 	if (keycode == KEY_RIGHT)
-		view_point_rotate(data, false, true);
+		view_point_rotate(data, RIGHT);
 	return (true);
 }
 
@@ -69,12 +69,12 @@ static int	mouse_hook_list(int x, int y, t_data *data)
 	while (x < data->window_width / 3)
 	{
 		mlx_mouse_get_pos(data->game->mlx_ptr, data->game->win_ptr, &x, &y);
-		view_point_rotate(data, true, false);
+		view_point_rotate(data, LEFT);
 	}
 	while (x > data->window_width - data->window_width / 3)
 	{
 		mlx_mouse_get_pos(data->game->mlx_ptr, data->game->win_ptr, &x, &y);
-		view_point_rotate(data, false, true);
+		view_point_rotate(data, RIGHT);
 	}
 	return (true);
 }
