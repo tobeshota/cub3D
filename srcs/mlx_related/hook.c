@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: toshota <toshota@student.42.fr>            +#+  +:+       +#+        */
+/*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/17 16:01:25 by toshota          ###   ########.fr       */
+/*   Updated: 2024/02/17 18:06:50 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,15 @@ static int	key_hook_list(int keycode, t_data *data)
 	return (true);
 }
 
+static int	mouse_hook_list(int x, int y, t_data *data)
+{
+	(void)x;
+	(void)y;
+	(void)data;
+	// mlx_mouse_move(data->game->mlx_ptr, data->game->win_ptr, x, y);
+	return (true);
+}
+
 void	mlx_hook_list(t_data *data)
 {
 	mlx_hook(data->game->win_ptr,
@@ -72,6 +81,12 @@ void	mlx_hook_list(t_data *data)
 		KEY_PRESS,
 		1L << 0,
 		&key_hook_list,
+		data
+		);
+	mlx_hook(data->game->win_ptr,
+		6,
+		1L << 6,
+		&mouse_hook_list,
 		data
 		);
 	mlx_expose_hook(data->game->win_ptr, ray_cast, data);
