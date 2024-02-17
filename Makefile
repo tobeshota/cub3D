@@ -20,10 +20,12 @@ SRCS			+= $(addprefix $(SRCDIR)/error/, $(ERROR_SRC))
 
 MAKE_DIR		= main init mlx_related texture ray utils check error
 
-OBJDIR = objs
-OBJS = $(subst $(SRCDIR), $(OBJDIR), $(SRCS:.c=.o))
-DEPS = $(OBJS:.o=.d)
-MAKE_DIRS = $(addprefix $(OBJDIR)/, $(MAKE_DIR))
+OBJDIR			= objs
+OBJS			= $(subst $(SRCDIR), $(OBJDIR), $(SRCS:.c=.o))
+DEPS			= $(OBJS:.o=.d)
+MAKE_DIRS		= $(addprefix $(OBJDIR)/, $(MAKE_DIR))
+
+MLX				= minilibx-linux/libmlx.a
 
 CFLAGS = -Wall -Wextra -Werror -MP -MMD -O3
 RM = rm -rf
@@ -70,12 +72,14 @@ endef
 
 all : $(NAME)
 
-$(NAME):$(OBJS)
+$(NAME) :$(MLX) $(OBJS)
 	@ $(MAKE) -s -C ./libft
-	$(GITMLX)
 	@ $(MAKE) -s -C ./minilibx-linux 2>/dev/null 1>/dev/null
 	@ $(CC) $(CFLAGS) $(INC) -o $@ $^ $(LIBFT)
 	@ printf "$(CHECK) $(BLUE)Compiling cub3D...%-50.50s\n$(RESET)"
+
+$(MLX):
+	$(GITMLX)
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
 	@ mkdir -p $(MAKE_DIRS)
