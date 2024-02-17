@@ -37,10 +37,10 @@ ifeq ($(MAKECMDGOALS), address)
 endif
 
 ifeq		($(shell uname), Linux)
-			INC = -I inc/ -I libft/inc -Iminilibx-linux -I/usr/include
+			INC = -I inc/ -I libft/inc -Iminilibx-linux -I/usr/include -D LINUX
 			LIBFT = libft/libft.a -Lminilibx-linux -lmlx_Linux -L/usr/lib -lX11 -lXext -lm
 else
-			INC = -I inc/ -I/usr/include -I libft/inc -Iminilibx-linux -Imlx
+			INC = -I inc/ -I/usr/include -I libft/inc -Iminilibx-linux -Imlx -D MAC
 			LIBFT = libft/libft.a -lmlx -framework OpenGL -framework AppKit
 endif
 
