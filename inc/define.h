@@ -6,7 +6,7 @@
 /*   By: toshota <toshota@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/17 20:09:14 by toshota          ###   ########.fr       */
+/*   Updated: 2024/02/22 14:17:44 by toshota          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 
 # define DISPLAY_W 720
 # define DISPLAY_H 480
+# define MINIMAP_SIDE 5
 # define TEX_W 64
 # define TEX_H 64
 # define RGBA 4
@@ -59,6 +60,8 @@
 # define E 0
 # define FL "F"
 # define CE "C"
+#define MINIMAP_FLOOR_PATH	"texture/minimap/floor.xpm"
+#define MINIMAP_WALL_PATH	"texture/minimap/wall.xpm"
 
 typedef struct s_mark
 {
@@ -106,6 +109,8 @@ typedef struct s_texture
 	t_img		*south;
 	t_img		*west;
 	t_img		*east;
+	void		*minimap_wall;
+	void		*minimap_floor;
 }				t_texture;
 
 typedef struct s_ray

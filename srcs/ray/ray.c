@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: toshota <toshota@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/11 17:27:49 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/22 14:17:13 by toshota          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,27 @@ static void	calcu_wall_height(t_ray *ray)
 	return ;
 }
 
+void	put_minimap(t_data *data)
+{
+	int y;
+	int x;
+
+	y = 0;
+	while (data->map->map[y])
+	{
+		x = 0;
+		while (data->map->map[y][x])
+		{
+			if (data->map->map[y][x] == WALL)
+				mlx_put_image_to_window(data->game->mlx_ptr, data->game->win_ptr, data->game->texture->minimap_wall, x * MINIMAP_SIDE, y * MINIMAP_SIDE);
+			else
+				mlx_put_image_to_window(data->game->mlx_ptr, data->game->win_ptr, data->game->texture->minimap_floor, x * MINIMAP_SIDE, y * MINIMAP_SIDE);
+			x++;
+		}
+		y++;
+	}
+}
+
 int	ray_cast(t_data *data)
 {
 	int		dot;
@@ -102,5 +123,7 @@ int	ray_cast(t_data *data)
 		dot++;
 	}
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img->img, 0, 0);
+	// ミニマップを描写する
+	put_minimap(data);
 	return (true);
 }
