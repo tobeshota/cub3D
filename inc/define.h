@@ -6,7 +6,7 @@
 /*   By: toshota <toshota@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/22 14:17:44 by toshota          ###   ########.fr       */
+/*   Updated: 2024/02/22 17:52:00 by toshota          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@
 # define CE "C"
 #define MINIMAP_FLOOR_PATH	"texture/minimap/floor.xpm"
 #define MINIMAP_WALL_PATH	"texture/minimap/wall.xpm"
+#define MINIMAP_PLAYER_PATH	"texture/minimap/player.xpm"
 
 typedef struct s_mark
 {
@@ -109,8 +110,9 @@ typedef struct s_texture
 	t_img		*south;
 	t_img		*west;
 	t_img		*east;
-	void		*minimap_wall;
 	void		*minimap_floor;
+	void		*minimap_wall;
+	void		*minimap_player;
 }				t_texture;
 
 typedef struct s_ray

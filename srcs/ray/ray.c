@@ -6,7 +6,7 @@
 /*   By: toshota <toshota@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/22 14:17:13 by toshota          ###   ########.fr       */
+/*   Updated: 2024/02/22 17:55:15 by toshota          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,8 @@ void	put_minimap(t_data *data)
 		{
 			if (data->map->map[y][x] == WALL)
 				mlx_put_image_to_window(data->game->mlx_ptr, data->game->win_ptr, data->game->texture->minimap_wall, x * MINIMAP_SIDE, y * MINIMAP_SIDE);
+			else if (data->map->map[y][x] == EAST || data->map->map[y][x] == SOUTH || data->map->map[y][x] == WEST || data->map->map[y][x] == NORTH)
+				mlx_put_image_to_window(data->game->mlx_ptr, data->game->win_ptr, data->game->texture->minimap_player, x * MINIMAP_SIDE, y * MINIMAP_SIDE);
 			else
 				mlx_put_image_to_window(data->game->mlx_ptr, data->game->win_ptr, data->game->texture->minimap_floor, x * MINIMAP_SIDE, y * MINIMAP_SIDE);
 			x++;
