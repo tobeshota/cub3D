@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: toshota <toshota@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*   By: toshota <toshota@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/22 14:17:13 by toshota          ###   ########.fr       */
+/*   Updated: 2024/02/23 15:14:56 by toshota          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	ray_firing(t_game *game, t_ray *ray, int x)
 {
 	double	window_x;
 
-	window_x = 0;
 	window_x = 2 * x / (double)DPI_W - 1;
 	ray->raydirx = game->dirx + game->camx * window_x;
 	ray->raydiry = game->diry + game->camy * window_x;
@@ -82,10 +81,70 @@ static void	calcu_wall_height(t_ray *ray)
 	return ;
 }
 
-void	put_minimap(t_data *data)
+void	mlx_put_image_to_window_at_specific_magnification(t_data *data, int x, int y, int magnification)
+{
+	void *img_ptr;
+	int pos_x_to_put_pixel;
+	int pos_y_to_put_pixel;
+	int i;
+	int j;
+
+	if (data->map->map[y][x] == WALL)
+		img_ptr = data->game->texture->minimap_wall;
+	else if (data->map->map[y][x] == FLOOR || (data->map->map[y][x] == EAST || data->map->map[y][x] == SOUTH || data->map->map[y][x] == WEST || data->map->map[y][x] == NORTH))
+		img_ptr = data->game->texture->minimap_floor;
+	else
+		return ;
+	i = 0;
+	pos_x_to_put_pixel = (x + data->game->posx) * magnification;
+	pos_y_to_put_pixel = (y + data->game->posy) * magnification;
+	while (i < magnification)
+	{
+		j = 0;
+		while (j < magnification)
+		{
+			mlx_put_image_to_window(data->game->mlx_ptr, data->game->win_ptr, img_ptr, pos_x_to_put_pixel + i, pos_y_to_put_pixel + j);
+			j++;
+		}
+		i++;
+	}
+}
+
+// ・プレイヤーの位置を中心として表示されるミニマップを円型にする（xの現在位置^2 + yの現在位置^2 == 円の大きさ（定数）とし，この式を満たす位置であるならばmlx_put_image_to_window()する）
+#define CIRCLE_RADIUS 30
+#define INIT_CIRCLE_POS_X	DISPLAY_W - CIRCLE_RADIUS * 2
+#define INIT_CIRCLE_POS_Y	DISPLAY_H - CIRCLE_RADIUS * 2
+void	put_circle(t_data *data)
 {
 	int y;
 	int x;
+
+	y = -MINIMAP_DISPLAY_H;
+	while (y < MINIMAP_DISPLAY_H)
+	{
+		x = -MINIMAP_DISPLAY_W;
+		while (x < MINIMAP_DISPLAY_W)
+		{
+			if (x * x + y * y <= CIRCLE_RADIUS * CIRCLE_RADIUS)
+				mlx_put_image_to_window(data->game->mlx_ptr, data->game->win_ptr, data->game->texture->minimap_floor, x + INIT_CIRCLE_POS_X, y + INIT_CIRCLE_POS_Y);
+			x++;
+		}
+		y++;
+	}
+}
+
+
+/* ミニマップを表示する
+
+・ミニマップを表示する
+・ミニマップをプレイヤーの位置を中心にして表示する
+・プレイヤーの位置を中心として表示されるミニマップを円型にする（xの現在位置^2 + yの現在位置^2 == 円の大きさ（定数）とし，この式を満たす位置であるならばmlx_put_image_to_window()する）
+
+ */
+void	put_minimap(t_data *data)
+{
+	int	y;
+	int	x;
 
 	y = 0;
 	while (data->map->map[y])
@@ -93,14 +152,71 @@ void	put_minimap(t_data *data)
 		x = 0;
 		while (data->map->map[y][x])
 		{
+			mlx_put_image_to_window_at_specific_magnification(data, x, y, MINIMAP_SIDE);
+			/*
 			if (data->map->map[y][x] == WALL)
 				mlx_put_image_to_window(data->game->mlx_ptr, data->game->win_ptr, data->game->texture->minimap_wall, x * MINIMAP_SIDE, y * MINIMAP_SIDE);
-			else
+				// mlx_put_image_to_window(data->game->mlx_ptr, data->game->win_ptr, data->game->texture->minimap_wall, x, y);
+				// my_mlx_pixel_put(data->game->img, x * MINIMAP_SIDE, y * MINIMAP_SIDE, 0x0000FF7F);
+			else if (data->map->map[y][x] == FLOOR || (data->map->map[y][x] == EAST || data->map->map[y][x] == SOUTH || data->map->map[y][x] == WEST || data->map->map[y][x] == NORTH))
 				mlx_put_image_to_window(data->game->mlx_ptr, data->game->win_ptr, data->game->texture->minimap_floor, x * MINIMAP_SIDE, y * MINIMAP_SIDE);
+				// mlx_put_image_to_window(data->game->mlx_ptr, data->game->win_ptr, data->game->texture->minimap_floor, x, y);
+				// my_mlx_pixel_put(data->game->img, x * MINIMAP_SIDE, y * MINIMAP_SIDE, 0x00FFFF7F);
+			*/
 			x++;
 		}
 		y++;
 	}
+	printf("(%f, %f)\n", data->game->posx, data->game->posy);
+}
+
+// ピクセルを特定の倍率でimgに貼り付ける
+void mlx_pixel_put_at_magnification(t_data *data, int x, int y, int magnification)
+{
+	int pos_x_to_put_pixel;
+	int pos_y_to_put_pixel;
+	int	color;
+	int	i;
+	int	j;
+
+	if (data->map->map[y][x] == WALL)
+		color = MINIMAP_WALL_COLOR;
+	else if (data->map->map[y][x] == FLOOR || (data->map->map[y][x] == EAST || data->map->map[y][x] == SOUTH || data->map->map[y][x] == WEST || data->map->map[y][x] == NORTH))
+		color = MINIMAP_FLOOR_COLOR;
+	else
+		return ;
+	pos_x_to_put_pixel = x * magnification;
+	pos_y_to_put_pixel = y * magnification;
+	i = 0;
+	while (i < magnification)
+	{
+		j = 0;
+		while (j < magnification)
+		{
+			my_mlx_pixel_put(data->game->img, pos_x_to_put_pixel + i, pos_x_to_put_pixel + j, color);
+			j++;
+		}
+		i++;
+	}
+}
+
+void	put_minimap_(t_data *data)
+{
+	int	y;
+	int	x;
+
+	y = 0;
+	while (data->map->map[y])
+	{
+		x = 0;
+		while (data->map->map[y][x])
+		{
+			mlx_pixel_put_at_magnification(data, x, y, MINIMAP_SIDE);
+			x++;
+		}
+		y++;
+	}
+	mlx_put_image_to_window(data->game->mlx_ptr, data->game->win_ptr, data->game->img->img, 0, 0);
 }
 
 int	ray_cast(t_data *data)
@@ -124,6 +240,7 @@ int	ray_cast(t_data *data)
 	}
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img->img, 0, 0);
 	// ミニマップを描写する
-	put_minimap(data);
+	// put_minimap(data);
+	put_circle(data);
 	return (true);
 }
