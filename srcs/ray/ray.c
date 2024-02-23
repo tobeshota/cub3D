@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ray.c                                              :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: toshota <toshota@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/23 15:14:56 by toshota          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "ray.h"
 
 void	ray_firing(t_game *game, t_ray *ray, int x)
@@ -156,9 +144,9 @@ void	put_minimap(t_data *data)
 			/*
 			if (data->map->map[y][x] == WALL)
 				mlx_put_image_to_window(data->game->mlx_ptr, data->game->win_ptr, data->game->texture->minimap_wall, x * MINIMAP_SIDE, y * MINIMAP_SIDE);
-				// mlx_put_image_to_window(data->game->mlx_ptr, data->game->win_ptr, data->game->texture->minimap_wall, x, y);
-				// my_mlx_pixel_put(data->game->img, x * MINIMAP_SIDE, y * MINIMAP_SIDE, 0x0000FF7F);
-			else if (data->map->map[y][x] == FLOOR || (data->map->map[y][x] == EAST || data->map->map[y][x] == SOUTH || data->map->map[y][x] == WEST || data->map->map[y][x] == NORTH))
+			else if (data->map->map[y][x] == EAST || data->map->map[y][x] == SOUTH || data->map->map[y][x] == WEST || data->map->map[y][x] == NORTH)
+				mlx_put_image_to_window(data->game->mlx_ptr, data->game->win_ptr, data->game->texture->minimap_player, x * MINIMAP_SIDE, y * MINIMAP_SIDE);
+			else
 				mlx_put_image_to_window(data->game->mlx_ptr, data->game->win_ptr, data->game->texture->minimap_floor, x * MINIMAP_SIDE, y * MINIMAP_SIDE);
 				// mlx_put_image_to_window(data->game->mlx_ptr, data->game->win_ptr, data->game->texture->minimap_floor, x, y);
 				// my_mlx_pixel_put(data->game->img, x * MINIMAP_SIDE, y * MINIMAP_SIDE, 0x00FFFF7F);
