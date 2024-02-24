@@ -121,43 +121,6 @@ void	put_circle(t_data *data)
 	}
 }
 
-
-/* ミニマップを表示する
-
-・ミニマップを表示する
-・ミニマップをプレイヤーの位置を中心にして表示する
-・プレイヤーの位置を中心として表示されるミニマップを円型にする（xの現在位置^2 + yの現在位置^2 == 円の大きさ（定数）とし，この式を満たす位置であるならばmlx_put_image_to_window()する）
-
- */
-void	put_minimap(t_data *data)
-{
-	int	y;
-	int	x;
-
-	y = 0;
-	while (data->map->map[y])
-	{
-		x = 0;
-		while (data->map->map[y][x])
-		{
-			mlx_put_image_to_window_at_specific_magnification(data, x, y, MINIMAP_SIDE);
-			/*
-			if (data->map->map[y][x] == WALL)
-				mlx_put_image_to_window(data->game->mlx_ptr, data->game->win_ptr, data->game->texture->minimap_wall, x * MINIMAP_SIDE, y * MINIMAP_SIDE);
-			else if (data->map->map[y][x] == EAST || data->map->map[y][x] == SOUTH || data->map->map[y][x] == WEST || data->map->map[y][x] == NORTH)
-				mlx_put_image_to_window(data->game->mlx_ptr, data->game->win_ptr, data->game->texture->minimap_player, x * MINIMAP_SIDE, y * MINIMAP_SIDE);
-			else
-				mlx_put_image_to_window(data->game->mlx_ptr, data->game->win_ptr, data->game->texture->minimap_floor, x * MINIMAP_SIDE, y * MINIMAP_SIDE);
-				// mlx_put_image_to_window(data->game->mlx_ptr, data->game->win_ptr, data->game->texture->minimap_floor, x, y);
-				// my_mlx_pixel_put(data->game->img, x * MINIMAP_SIDE, y * MINIMAP_SIDE, 0x00FFFF7F);
-			*/
-			x++;
-		}
-		y++;
-	}
-	printf("(%f, %f)\n", data->game->posx, data->game->posy);
-}
-
 // ピクセルを特定の倍率でimgに貼り付ける
 void mlx_pixel_put_at_magnification(t_data *data, int x, int y, int magnification)
 {
@@ -181,14 +144,21 @@ void mlx_pixel_put_at_magnification(t_data *data, int x, int y, int magnificatio
 		j = 0;
 		while (j < magnification)
 		{
-			my_mlx_pixel_put(data->game->img, pos_x_to_put_pixel + i, pos_x_to_put_pixel + j, color);
+			my_mlx_pixel_put(data->game->img, pos_x_to_put_pixel + i, pos_y_to_put_pixel + j, color);
 			j++;
 		}
 		i++;
 	}
 }
 
-void	put_minimap_(t_data *data)
+/* ミニマップを表示する
+
+・ミニマップを表示する
+・ミニマップをプレイヤーの位置を中心にして表示する
+・プレイヤーの位置を中心として表示されるミニマップを円型にする（xの現在位置^2 + yの現在位置^2 == 円の大きさ（定数）とし，この式を満たす位置であるならばmlx_put_image_to_window()する）
+
+*/
+void	put_minimap(t_data *data)
 {
 	int	y;
 	int	x;
@@ -199,7 +169,7 @@ void	put_minimap_(t_data *data)
 		x = 0;
 		while (data->map->map[y][x])
 		{
-			mlx_pixel_put_at_magnification(data, x, y, MINIMAP_SIDE);
+			mlx_pixel_put_at_magnification(data, x, y, 5);
 			x++;
 		}
 		y++;
@@ -228,7 +198,7 @@ int	ray_cast(t_data *data)
 	}
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img->img, 0, 0);
 	// ミニマップを描写する
-	// put_minimap(data);
-	put_circle(data);
+	put_minimap(data);
+	// put_circle(data);
 	return (true);
 }
