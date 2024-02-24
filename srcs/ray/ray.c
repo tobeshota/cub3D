@@ -145,6 +145,7 @@ void mlx_pixel_put_at_magnification(t_data *data, int x, int y, int magnificatio
 		while (j < magnification)
 		{
 			my_mlx_pixel_put(data->game->img, pos_x_to_put_pixel + i, pos_y_to_put_pixel + j, color);
+			my_mlx_pixel_put(data->game->img, data->game->posx * magnification + i, data->game->posy * magnification + j, MINIMAP_PLAYER_COLOR);
 			j++;
 		}
 		i++;
@@ -169,7 +170,7 @@ void	put_minimap(t_data *data)
 		x = 0;
 		while (data->map->map[y][x])
 		{
-			mlx_pixel_put_at_magnification(data, x, y, 5);
+			mlx_pixel_put_at_magnification(data, x, y, MINIMAP_SIDE);
 			x++;
 		}
 		y++;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   define.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: toshota <toshota@student.42.fr>            +#+  +:+       +#+        */
+/*   By: toshota <toshota@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/23 15:17:13 by toshota          ###   ########.fr       */
+/*   Updated: 2024/02/24 18:33:48 by toshota          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,14 @@
 # define DISPLAY_H 480
 # define MINIMAP_DISPLAY_W DISPLAY_W / 10
 # define MINIMAP_DISPLAY_H DISPLAY_H / 10
-# define MINIMAP_SIDE 3
+# define MINIMAP_SIDE 5
 # define TEX_W 64
 # define TEX_H 64
 # define RGBA 4
 # define EIGHT 255
 # define MINIMAP_WALL_COLOR 0x00D2B69A
 # define MINIMAP_FLOOR_COLOR 0x00BDC6A0
+# define MINIMAP_PLAYER_COLOR 0x00FF0000
 
 # define ESC 65307
 # define KEY_W 119
