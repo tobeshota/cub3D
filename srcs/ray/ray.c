@@ -122,6 +122,29 @@ void	put_circle(t_data *data)
 }
 
 // ピクセルを特定の倍率でimgに貼り付ける
+void mlx_player_pixel_put_at_magnification(t_data *data, int magnification)
+{
+	int pos_x_to_put_pixel;
+	int pos_y_to_put_pixel;
+	int	i;
+	int	j;
+
+	pos_x_to_put_pixel = data->game->posx * magnification;
+	pos_y_to_put_pixel = data->game->posy * magnification;
+	i = 0;
+	while (i < magnification)
+	{
+		j = 0;
+		while (j < magnification)
+		{
+			my_mlx_pixel_put(data->game->img, pos_x_to_put_pixel + i, pos_y_to_put_pixel + j, MINIMAP_PLAYER_COLOR);
+			j++;
+		}
+		i++;
+	}
+}
+
+// ピクセルを特定の倍率でimgに貼り付ける
 void mlx_pixel_put_at_magnification(t_data *data, int x, int y, int magnification)
 {
 	int pos_x_to_put_pixel;
@@ -145,7 +168,6 @@ void mlx_pixel_put_at_magnification(t_data *data, int x, int y, int magnificatio
 		while (j < magnification)
 		{
 			my_mlx_pixel_put(data->game->img, pos_x_to_put_pixel + i, pos_y_to_put_pixel + j, color);
-			my_mlx_pixel_put(data->game->img, data->game->posx * magnification + i, data->game->posy * magnification + j, MINIMAP_PLAYER_COLOR);
 			j++;
 		}
 		i++;
@@ -175,6 +197,7 @@ void	put_minimap(t_data *data)
 		}
 		y++;
 	}
+	mlx_player_pixel_put_at_magnification(data, MINIMAP_SIDE);
 	mlx_put_image_to_window(data->game->mlx_ptr, data->game->win_ptr, data->game->img->img, 0, 0);
 }
 
