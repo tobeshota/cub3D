@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   define.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: toshota <toshota@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/24 18:33:48 by toshota          ###   ########.fr       */
+/*   Updated: 2024/02/25 13:49:25 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,9 @@
 # define DPI_W DISPLAY_W
 # define DPI_H DISPLAY_H
 # define CAMERA 1.32
-# define MOVE 0.05
-# define ROTATE 2
+# define MOVE 0.1
+# define ROTATE 4
+# define CIRCLE 360
 # define VECTOR 1
 # define X_SIDE 0
 # define Y_SIDE 1
@@ -65,9 +66,9 @@
 # define E 0
 # define FL "F"
 # define CE "C"
-#define MINIMAP_FLOOR_PATH	"texture/minimap/floor.xpm"
-#define MINIMAP_WALL_PATH	"texture/minimap/wall.xpm"
-#define MINIMAP_PLAYER_PATH	"texture/minimap/player.xpm"
+# define MINIMAP_FLOOR_PATH	"texture/minimap/floor.xpm"
+# define MINIMAP_WALL_PATH	"texture/minimap/wall.xpm"
+# define MINIMAP_PLAYER_PATH	"texture/minimap/player.xpm"
 
 typedef struct s_mark
 {
@@ -131,17 +132,17 @@ typedef struct s_ray
 	int			mouse_y;
 	int			stepx;
 	int			stepy;
-	double raydirx; // 光線のx軸の方向
+	double		raydirx;
 	double		raydiry;
-	double sidedistx; // プレイヤーの位置から次のx軸までの光線の長さ
-	double sidedisty; // プレイヤーの位置から次のy軸までの光線の長さ
+	double		sidedistx;
+	double		sidedisty;
 	double		deltadistx;
 	double		deltadisty;
 	double		raydist;
 	int			wall_h;
-	int surplus;   // ウィンドウからはみ出る壁
-	int drawstart; // 壁の描き始め（壁の一番高いところ）
-	int drawend;   // 壁の描き終わり（壁の一番低いところ）
+	int			surplus;
+	int			drawstart;
+	int			drawend;
 }				t_ray;
 
 typedef struct s_game

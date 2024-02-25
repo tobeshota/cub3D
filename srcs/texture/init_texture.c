@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_texture.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: toshota <toshota@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/22 17:53:07 by toshota          ###   ########.fr       */
+/*   Updated: 2024/02/25 13:18:52 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static bool	get_img_data(t_game *game, char *path, char dir)
 	return (true);
 }
 
-static bool get_dir_img_data(t_map *map, t_game *game)
+static bool	get_dir_img_data(t_map *map, t_game *game)
 {
 	if (!get_img_data(game, map->no_texture, NORTH))
 		return (false);
@@ -48,11 +48,17 @@ static bool get_dir_img_data(t_map *map, t_game *game)
 	return (true);
 }
 
-static void get_minimap_img_data(t_game *game)
+static void	get_minimap_img_data(t_game *game)
 {
-	game->texture->minimap_floor = mlx_xpm_file_to_image(game->mlx_ptr, MINIMAP_FLOOR_PATH, &game->texture->tex_w, &game->texture->tex_h);
-	game->texture->minimap_wall = mlx_xpm_file_to_image(game->mlx_ptr, MINIMAP_WALL_PATH, &game->texture->tex_w, &game->texture->tex_h);
-	game->texture->minimap_player = mlx_xpm_file_to_image(game->mlx_ptr, MINIMAP_PLAYER_PATH, &game->texture->tex_w, &game->texture->tex_h);
+	t_texture	*texture;
+
+	texture = game->texture;
+	texture->minimap_floor = mlx_xpm_file_to_image(game->mlx_ptr,
+			MINIMAP_FLOOR_PATH, &texture->tex_w, &texture->tex_h);
+	texture->minimap_wall = mlx_xpm_file_to_image(game->mlx_ptr,
+			MINIMAP_WALL_PATH, &texture->tex_w, &texture->tex_h);
+	texture->minimap_player = mlx_xpm_file_to_image(game->mlx_ptr,
+			MINIMAP_PLAYER_PATH, &texture->tex_w, &texture->tex_h);
 }
 
 static bool	input_texture(t_map *map, t_game *game)

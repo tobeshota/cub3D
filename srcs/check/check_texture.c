@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_texture.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: toshota <toshota@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/22 14:16:16 by toshota          ###   ########.fr       */
+/*   Updated: 2024/02/25 13:13:25 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static bool	empty_texture_check(t_map *map)
 	return (false);
 }
 
-static bool does_file_exist(char *file_path)
+static bool	does_file_exist(char *file_path)
 {
 	int	fd;
 
@@ -50,39 +50,12 @@ static bool does_file_exist(char *file_path)
 
 static bool	exitst_texture_check(t_map *map)
 {
-	if (does_file_exist(map->no_texture) && does_file_exist(map->so_texture) && does_file_exist(map->we_texture) && does_file_exist(map->ea_texture) && does_file_exist(MINIMAP_FLOOR_PATH) && does_file_exist(MINIMAP_WALL_PATH))
+	if (does_file_exist(map->no_texture)
+		&& does_file_exist(map->so_texture)
+		&& does_file_exist(map->we_texture)
+		&& does_file_exist(map->ea_texture))
 		return (false);
 	return (perror(""), true);
-
-	// int	fd;
-
-	// fd = open(map->no_texture, O_RDONLY);
-	// if (fd == -1)
-	// 	return (perror(""), true);
-	// close(fd);
-	// fd = open(map->so_texture, O_RDONLY);
-	// if (fd == -1)
-	// 	return (perror(""), true);
-	// close(fd);
-	// fd = open(map->we_texture, O_RDONLY);
-	// if (fd == -1)
-	// 	return (perror(""), true);
-	// close(fd);
-	// fd = open(map->ea_texture, O_RDONLY);
-	// if (fd == -1)
-	// 	return (perror(""), true);
-	// close(fd);
-
-	// fd = open(MINIMAP_FLOOR_PATH, O_RDONLY);
-	// if (fd == -1)
-	// 	return (perror(""), true);
-	// close(fd);
-
-	// fd = open(MINIMAP_WALL_PATH, O_RDONLY);
-	// if (fd == -1)
-	// 	return (perror(""), true);
-	// close(fd);
-	// return (false);
 }
 
 bool	check_texture(t_map *map)

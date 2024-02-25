@@ -1,0 +1,84 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   minimap.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
+/*   Updated: 2024/02/25 13:45:30 by csakamot         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ray.h"
+
+void	mlx_player_pixel_put_at_magnification(t_data *data, int magnification)
+{
+	int	pos_x_to_put_pixel;
+	int	pos_y_to_put_pixel;
+	int	i;
+	int	j;
+
+	pos_x_to_put_pixel = data->game->posx * magnification;
+	pos_y_to_put_pixel = data->game->posy * magnification;
+	i = 0;
+	while (i < magnification)
+	{
+		j = 0;
+		while (j < magnification)
+		{
+			my_mlx_pixel_put(data->game->img,
+				pos_x_to_put_pixel + i,
+				pos_y_to_put_pixel + j,
+				MINIMAP_PLAYER_COLOR);
+			j++;
+		}
+		i++;
+	}
+}
+
+void	mlx_put_map(t_data *data, int x, int y, unsigned int color)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < MINIMAP_SIDE)
+	{
+		j = 0;
+		while (j < MINIMAP_SIDE)
+		{
+			my_mlx_pixel_put(data->game->img, x + i, y + j, color);
+			j++;
+		}
+		i++;
+	}
+}
+
+void	put_minimap(t_data *data)
+{
+	int				y;
+	int				x;
+	unsigned int	color;
+
+	color = 0;
+	y = 0;
+	while (data->map->map[y])
+	{
+		x = 0;
+		while (data->map->map[y][x])
+		{
+			if (data->map->map[y][x] == WALL)
+				color = MINIMAP_WALL_COLOR;
+			else if (judge_directon_chara(data->map->map[y][x])
+					|| data->map->map[y][x] == FLOOR)
+				color = MINIMAP_FLOOR_COLOR;
+			if (judge_directon_chara(data->map->map[y][x]) ||
+				data->map->map[y][x] == WALL || data->map->map[y][x] == FLOOR)
+				mlx_put_map(data, x * MINIMAP_SIDE, y * MINIMAP_SIDE, color);
+			x++;
+		}
+		y++;
+	}
+	mlx_player_pixel_put_at_magnification(data, MINIMAP_SIDE);
+}
