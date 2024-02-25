@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: toshota <toshota@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/11 17:27:49 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/25 15:30:18 by toshota          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	ray_firing(t_game *game, t_ray *ray, int x)
 {
 	double	window_x;
 
-	window_x = 0;
 	window_x = 2 * x / (double)DPI_W - 1;
 	ray->raydirx = game->dirx + game->camx * window_x;
 	ray->raydiry = game->diry + game->camy * window_x;
@@ -101,6 +100,8 @@ int	ray_cast(t_data *data)
 		draw_wall(map, game, game->ray, dot);
 		dot++;
 	}
+	if (data->map->does_minimap_put == true)
+		put_minimap(data);
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img->img, 0, 0);
 	return (true);
 }

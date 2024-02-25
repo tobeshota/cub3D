@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/01/23 22:25:30 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/25 13:13:25 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,27 +38,24 @@ static bool	empty_texture_check(t_map *map)
 	return (false);
 }
 
-static bool	exitst_texture_check(t_map *map)
+static bool	does_file_exist(char *file_path)
 {
 	int	fd;
 
-	fd = open(map->no_texture, O_RDONLY);
+	fd = open(file_path, O_RDONLY);
 	if (fd == -1)
-		return (perror(""), true);
-	close(fd);
-	fd = open(map->so_texture, O_RDONLY);
-	if (fd == -1)
-		return (perror(""), true);
-	close(fd);
-	fd = open(map->we_texture, O_RDONLY);
-	if (fd == -1)
-		return (perror(""), true);
-	close(fd);
-	fd = open(map->ea_texture, O_RDONLY);
-	if (fd == -1)
-		return (perror(""), true);
-	close(fd);
-	return (false);
+		return (false);
+	return (close(fd), true);
+}
+
+static bool	exitst_texture_check(t_map *map)
+{
+	if (does_file_exist(map->no_texture)
+		&& does_file_exist(map->so_texture)
+		&& does_file_exist(map->we_texture)
+		&& does_file_exist(map->ea_texture))
+		return (false);
+	return (perror(""), true);
 }
 
 bool	check_texture(t_map *map)

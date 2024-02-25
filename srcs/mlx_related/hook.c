@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: toshota <toshota@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/17 20:15:25 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/25 15:29:09 by toshota          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,11 @@ static int	key_hook_list(int keycode, t_data *data)
 		move_ray_cast(data, -MOVE, false);
 	if (keycode == KEY_D)
 		move_ray_cast(data, false, MOVE);
+	if (keycode == KEY_Q)
+	{
+		data->map->does_minimap_put = !(data->map->does_minimap_put);
+		ray_cast(data);
+	}
 	if (keycode == KEY_LEFT)
 		view_point_rotate(data, LEFT);
 	if (keycode == KEY_RIGHT)
