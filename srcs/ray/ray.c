@@ -142,6 +142,31 @@ void mlx_player_pixel_put_at_magnification(t_data *data, int magnification)
 		}
 		i++;
 	}
+
+	i = magnification / 3;
+// S
+pos_x_to_put_pixel = (data->game->posx - data->game->dirx + 0) * magnification;
+pos_y_to_put_pixel = (data->game->posy - data->game->diry + 0) * magnification;
+
+	// pos_x_to_put_pixel = (data->game->posx - data->game->dirx + data->game->init_dirx) * magnification;
+	// pos_y_to_put_pixel = (data->game->posy - data->game->diry + data->game->init_diry) * magnification;
+	while (i < magnification * 4 / 5 + 1)
+	{
+		j = 1;
+		while (j < magnification * 4 / 5 + 1)
+		{
+			my_mlx_pixel_put(data->game->img, pos_x_to_put_pixel + i, pos_y_to_put_pixel - magnification + j, MINIMAP_PLAYER_COLOR);
+			j++;
+		}
+		i++;
+	}
+	/*
+	N(0.000000, -1.000000)
+	E(1.000000, 0.000000)
+S(0.000000, 1.000000)
+	W(-1.000000, 0.000000)
+	*/
+	printf("(%f, %f)(%f, %f)\n", data->game->dirx, data->game->diry, data->game->init_dirx, data->game->init_diry);
 }
 
 // ピクセルを特定の倍率でimgに貼り付ける

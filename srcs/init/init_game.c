@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: toshota <toshota@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/05 14:34:05 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/25 13:57:30 by toshota          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ static void	get_player_direction(t_game *game, char chara)
 		game->dirx = 1;
 		game->camy = CAMERA / 2;
 	}
+	game->init_dirx = game->dirx;
+	game->init_diry = game->diry;
 	return ;
 }
 
