@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   define.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: toshota <toshota@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/25 14:48:10 by toshota          ###   ########.fr       */
+/*   Updated: 2024/02/25 15:05:04 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 # define DISPLAY_W 720
 # define DISPLAY_H 480
-# define MINIMAP_SIDE 5
+# define MINIMAP_SIDE 8
 # define TEX_W 64
 # define TEX_H 64
 # define RGBA 4

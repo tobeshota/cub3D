@@ -6,11 +6,32 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/25 13:45:30 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/25 15:05:43 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ray.h"
+
+void	draw_ray_in_map(t_data *data, int dirx, int diry)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < MINIMAP_SIDE * 4 / 5)
+	{
+		j = 0;
+		while (j < MINIMAP_SIDE * 4 / 5)
+		{
+			my_mlx_pixel_put(data->game->img,
+				dirx + i + 1, diry + j + 1,
+				MINIMAP_PLAYER_COLOR);
+			j++;
+		}
+		i++;
+	}
+	return ;
+}
 
 void	mlx_player_pixel_put_at_magnification(t_data *data, int magnification)
 {
@@ -35,20 +56,24 @@ void	mlx_player_pixel_put_at_magnification(t_data *data, int magnification)
 		}
 		i++;
 	}
+	draw_ray_in_map(data, (data->game->posx + data->game->dirx) * MINIMAP_SIDE,
+		(data->game->posy + data->game->diry) * MINIMAP_SIDE);
 }
 
 void	mlx_put_map(t_data *data, int x, int y, unsigned int color)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
+	t_game	*game;
 
+	game = data->game;
 	i = 0;
 	while (i < MINIMAP_SIDE)
 	{
 		j = 0;
 		while (j < MINIMAP_SIDE)
 		{
-			my_mlx_pixel_put(data->game->img, x + i, y + j, color);
+			my_mlx_pixel_put(game->img, x + i, y + j, color);
 			j++;
 		}
 		i++;
