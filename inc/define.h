@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   define.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: toshota <toshota@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/25 15:05:04 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/25 15:25:20 by toshota          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 # define KEY_A 97
 # define KEY_S 115
 # define KEY_D 100
+# define KEY_Q 113
 # define KEY_LEFT 65361
 # define KEY_RIGHT 65363
 
@@ -96,6 +97,7 @@ typedef struct s_map
 	char		*ea_texture;
 	int			*ce_color;
 	int			*fl_color;
+	bool		does_minimap_put;
 }				t_map;
 
 typedef struct s_img

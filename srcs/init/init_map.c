@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: toshota <toshota@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/01/20 19:35:22 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/25 15:25:48 by toshota          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	init_map(t_data *data, int argc, char **argv)
 		return (exit(EXIT_FAILURE));
 	if (!check_map(map))
 		return (exit(EXIT_FAILURE));
+	map->does_minimap_put = false;
 	data->map = map;
 	return ;
 }
