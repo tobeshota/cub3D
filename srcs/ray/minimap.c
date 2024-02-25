@@ -6,7 +6,7 @@
 /*   By: toshota <toshota@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/25 15:42:26 by toshota          ###   ########.fr       */
+/*   Updated: 2024/02/25 16:18:11 by toshota          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ void	draw_ray_in_map(t_data *data, int dirx, int diry)
 		while (j < MINIMAP_SIDE * 4 / 5)
 		{
 			my_mlx_pixel_put(data->game->img,
-				dirx + i + 1, diry + j + 1,
+				dirx + i + 1,
+				diry + j + 1,
 				MINIMAP_PLAYER_COLOR);
 			j++;
 		}
@@ -56,8 +57,9 @@ void	mlx_player_pixel_put_at_magnification(t_data *data, int magnification)
 		}
 		i++;
 	}
-	draw_ray_in_map(data, (data->game->posx - 0.5 + data->game->dirx) * magnification,
-		(data->game->posy - 0.5 + data->game->diry) * magnification);
+	draw_ray_in_map(data, (data->game->posx - 0.5 + data->game->dirx)
+		* magnification, (data->game->posy - 0.5 + data->game->diry)
+		* magnification);
 }
 
 void	mlx_put_map(t_data *data, int x, int y, unsigned int color)
