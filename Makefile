@@ -106,7 +106,7 @@ debug : re
 address : re
 
 norm :
-	norminette srcs includes libft
+	norminette srcs inc libft
 
 .PHONY : all clean fclean re debug address norm
 
