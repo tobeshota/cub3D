@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/25 13:49:25 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/25 14:01:47 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@
 # define MOVE 0.1
 # define ROTATE 4
 # define CIRCLE 360
+# define MAX_SIZE 40
 # define VECTOR 1
 # define X_SIDE 0
 # define Y_SIDE 1

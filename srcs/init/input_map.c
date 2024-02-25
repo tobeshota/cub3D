@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/03 12:45:15 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/25 14:04:03 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,8 @@ static void	create_map_data(char *map_src,
 	while (count < map_row)
 	{
 		line_len = ft_line_len(&map_src[start]);
+		if (line_len > MAX_SIZE)
+			return (print_error_msg("Map is too huge."), free_str_array(map));
 		map[count] = ft_substr(map_src, start, line_len);
 		if (!map[count])
 			return (print_error_msg(MALLOC_ERROR));
@@ -105,6 +107,8 @@ char	**input_map(char *map_src, t_mark *mark)
 
 	result = NULL;
 	map_row = nbr_map_line(map_src);
+	if (map_row > MAX_SIZE)
+		return (print_error_msg("Map is too huge."), NULL);
 	result = ft_calloc(sizeof(char *), map_row + 1);
 	if (!result)
 		return (print_error_msg(MALLOC_ERROR), NULL);
