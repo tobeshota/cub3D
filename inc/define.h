@@ -6,7 +6,7 @@
 /*   By: toshota <toshota@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/25 15:25:20 by toshota          ###   ########.fr       */
+/*   Updated: 2024/02/25 18:35:58 by toshota          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # define TEX_W 64
 # define TEX_H 64
 # define RGBA 4
-# define EIGHT 255
+# define EIGHT 256
 # define MINIMAP_WALL_COLOR 0x00D2B69A
 # define MINIMAP_FLOOR_COLOR 0x00BDC6A0
 # define MINIMAP_PLAYER_COLOR 0x00FF0000
