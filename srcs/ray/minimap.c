@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: toshota <toshota@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/25 15:05:43 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/25 16:18:11 by toshota          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ void	draw_ray_in_map(t_data *data, int dirx, int diry)
 		while (j < MINIMAP_SIDE * 4 / 5)
 		{
 			my_mlx_pixel_put(data->game->img,
-				dirx + i + 1, diry + j + 1,
+				dirx + i + 1,
+				diry + j + 1,
 				MINIMAP_PLAYER_COLOR);
 			j++;
 		}
@@ -40,8 +41,8 @@ void	mlx_player_pixel_put_at_magnification(t_data *data, int magnification)
 	int	i;
 	int	j;
 
-	pos_x_to_put_pixel = data->game->posx * magnification;
-	pos_y_to_put_pixel = data->game->posy * magnification;
+	pos_x_to_put_pixel = (data->game->posx - 0.5) * magnification;
+	pos_y_to_put_pixel = (data->game->posy - 0.5) * magnification;
 	i = 0;
 	while (i < magnification)
 	{
@@ -56,8 +57,9 @@ void	mlx_player_pixel_put_at_magnification(t_data *data, int magnification)
 		}
 		i++;
 	}
-	draw_ray_in_map(data, (data->game->posx + data->game->dirx) * MINIMAP_SIDE,
-		(data->game->posy + data->game->diry) * MINIMAP_SIDE);
+	draw_ray_in_map(data, (data->game->posx - 0.5 + data->game->dirx)
+		* magnification, (data->game->posy - 0.5 + data->game->diry)
+		* magnification);
 }
 
 void	mlx_put_map(t_data *data, int x, int y, unsigned int color)

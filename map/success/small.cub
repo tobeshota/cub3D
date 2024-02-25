@@ -1,0 +1,11 @@
+NO ./texture/jungle/north.xpm
+SO ./texture/jungle/south.xpm
+WE ./texture/jungle/west.xpm
+EA ./texture/jungle/east.xpm
+
+F 220,100,0
+C 225,30,0
+
+ 1
+1N1
+ 1
