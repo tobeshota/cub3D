@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: toshota <toshota@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*   By: toshota <toshota@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:32:08 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/25 16:18:11 by toshota          ###   ########.fr       */
+/*   Updated: 2024/02/25 17:01:17 by toshota          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@ void	draw_ray_in_map(t_data *data, int dirx, int diry)
 	int	j;
 
 	i = 0;
+	if (dirx < 0)
+		dirx = 0;
+	if (diry < 0)
+		diry = 0;
 	while (i < MINIMAP_SIDE * 4 / 5)
 	{
 		j = 0;
